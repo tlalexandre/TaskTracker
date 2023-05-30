@@ -14,20 +14,17 @@
     <title>Document</title>
   </head>
   <body>
+    <header></header>
     <div id="taskManager">
       <h1>Task Manager</h1>
+      <button id="newTask">+</button>
       <form id="taskForm">
         <label for="taskName" id="textName">Task Name</label>
-        <input
-          type="text"
-          id="taskName"
-          placeholder="Give a name to your task"
-          required
-        />
-        <label for="taskData">Description</label>
-        <textarea id="taskDescription" cols="30" rows="10"></textarea>
+        <input type="text" id="taskName" placeholder="Name" required />
         <label for="timeDue">Due Date</label>
         <input type="date" id="timeDue" required />
+        <label for="taskData">Description</label>
+        <textarea id="taskDescription" cols="15" rows="1"></textarea>
         <button type="submit">Add Task</button>
       </form>
 

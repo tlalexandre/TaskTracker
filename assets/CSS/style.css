@@ -25,27 +25,32 @@ body {
 
 h1 {
   font-family: "Monda", sans-serif;
-  font-size: 2.4rem;
+  font-size: 5rem;
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-decoration: underline;
   text-underline-offset: 10px;
 }
 
 form {
   display: flex;
-  flex-direction: column;
-  width: 80%;
-  height: 50vh;
+  /* flex-direction: column; */
+  width: 90%;
+  height: 100px;
   margin: 0 auto;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  border: 5px solid var(--color4);
+  border-radius: 0 20px 0 0;
+  padding: 0 150px;
 }
 label {
   font-family: "Kanit", sans-serif;
   color: var(--color5);
+  font-size: 1.8rem;
+  text-align: center;
 }
 input,
-input::placeholder,
 button,
 textarea {
   background-color: var(--color1);
@@ -54,10 +59,19 @@ textarea {
   font-family: "Arimo", sans-serif;
   border-radius: 20px;
 }
-#textName {
-  font-size: 2rem;
-  text-align: center;
-}
+
 #taskName {
   font-size: 1.2rem;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid var(--color5);
+}
+#taskDescription {
+  resize: none;
+}
+#newTask {
+  font-size: 5rem;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
