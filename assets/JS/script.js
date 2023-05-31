@@ -3,11 +3,15 @@ function createForm() {
   let formWrapper = document.querySelector("#taskManager");
   let form = document.createElement("form");
   form.classList.add("taskForm");
+  form.classList.add("boxShadows");
+  form.classList.add("gradientConvexe");
   formWrapper.appendChild(form);
 
   // Create the input for the name of the task.
   let taskName = document.createElement("input");
   taskName.classList.add("taskName");
+  taskName.classList.add("boxShadows");
+  taskName.classList.add("gradientConcave");
   taskName.setAttribute("type", "text");
   taskName.setAttribute("placeholder", "Enter your Task");
   form.appendChild(taskName);
@@ -15,6 +19,8 @@ function createForm() {
   // Create a button to add a date.
   let dateButton = document.createElement("button");
   dateButton.classList.add("dateButton");
+  dateButton.classList.add("boxShadows");
+  dateButton.classList.add("gradientConcave");
   dateButton.textContent = "Add Date";
   form.appendChild(dateButton);
 
@@ -39,6 +45,8 @@ function createForm() {
 
   let addTaskButton = document.createElement("button");
   addTaskButton.classList.add("addTaskButton");
+  addTaskButton.classList.add("boxShadows");
+  addTaskButton.classList.add("gradientConcave");
   addTaskButton.textContent = "Add Task";
   form.appendChild(addTaskButton);
   addTaskButton.addEventListener("click", function (event) {
@@ -52,6 +60,8 @@ function createForm() {
   });
   let removeTaskButton = document.createElement("button");
   removeTaskButton.classList.add("removeTaskButton");
+  removeTaskButton.classList.add("boxShadows");
+  removeTaskButton.classList.add("gradientConcave");
   removeTaskButton.textContent = "Remove";
   form.appendChild(removeTaskButton);
 
