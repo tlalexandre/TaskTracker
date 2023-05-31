@@ -4,12 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Arimo&family=Kanit:ital,wght@1,200&family=Monda:wght@700&display=swap"
-      rel="stylesheet"
-    />
+
     <link rel="stylesheet" href="./assets/CSS/style.css" />
     <title>Document</title>
   </head>
@@ -18,18 +13,10 @@
     <div id="taskManager">
       <h1>Task Manager</h1>
       <button id="newTask">+</button>
-      <form id="taskForm">
-        <label for="taskName" id="textName">Task Name</label>
-        <input type="text" id="taskName" placeholder="Name" required />
-        <label for="timeDue">Due Date</label>
-        <input type="date" id="timeDue" required />
-        <label for="taskData">Description</label>
-        <textarea id="taskDescription" cols="15" rows="1"></textarea>
-        <button type="submit">Add Task</button>
-      </form>
 
       <ul id="taskList"></ul>
     </div>
     <script src="./assets/JS/script.js"></script>
+    <script src="./assets/JS/changeShadow.js"></script>
   </body>
 </html>
