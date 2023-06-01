@@ -12,8 +12,6 @@ function createForm() {
 
   let nameWrapper = document.createElement("div");
   nameWrapper.classList.add("nameWrapper");
-  nameWrapper.classList.add("boxShadows");
-  nameWrapper.classList.add("gradientConvexe");
   form.appendChild(nameWrapper);
 
   let nameText = document.createElement("h2");
@@ -32,8 +30,6 @@ function createForm() {
 
   let dateWrapper = document.createElement("div");
   dateWrapper.classList.add("dateWrapper");
-  dateWrapper.classList.add("boxShadows");
-  dateWrapper.classList.add("gradientConvexe");
   form.appendChild(dateWrapper);
 
   let dateText = document.createElement("h2");
@@ -49,30 +45,8 @@ function createForm() {
   dateInput.classList.add("gradientConvexe");
   dateWrapper.appendChild(dateInput);
 
-  let descriptionWrapper = document.createElement("div");
-  descriptionWrapper.classList.add("descriptionWrapper");
-  descriptionWrapper.classList.add("boxShadows");
-  descriptionWrapper.classList.add("gradientConvexe");
-  form.appendChild(descriptionWrapper);
-
-  let descriptionText = document.createElement("h2");
-  descriptionText.classList.add("descriptionText");
-  descriptionText.textContent = "Description";
-  descriptionWrapper.appendChild(descriptionText);
-
-  let descriptionInput = document.createElement("textarea");
-  descriptionInput.setAttribute("resize", "none");
-  descriptionInput.setAttribute("cols", "30");
-  descriptionInput.setAttribute("rows", "10");
-  descriptionInput.classList.add("descriptionInput");
-  descriptionInput.classList.add("boxShadows");
-  descriptionInput.classList.add("gradientConcave");
-  descriptionWrapper.appendChild(descriptionInput);
-
   let categoriesPick = document.createElement("div");
   categoriesPick.classList.add("categoriesPick");
-  categoriesPick.classList.add("boxShadows");
-  categoriesPick.classList.add("gradientConcave");
   form.appendChild(categoriesPick);
 
   let categoriesPickText = document.createElement("h2");
@@ -82,8 +56,7 @@ function createForm() {
 
   let categoriesPickUl = document.createElement("ul");
   categoriesPickUl.classList.add("categoriesPickUl");
-  categoriesPickUl.classList.add("boxShadows");
-  categoriesPickUl.classList.add("gradientConcave");
+
   categoriesPick.appendChild(categoriesPickUl);
 
   let categories = retrieveCategories();
@@ -91,6 +64,9 @@ function createForm() {
   categories.forEach(function (category) {
     let categoryLi = document.createElement("li");
     let categoryButton = document.createElement("button");
+    categoryButton.classList.add("categoryButton");
+    categoryButton.classList.add("boxShadows");
+
     categoryLi.appendChild(categoryButton);
     categoryButton.textContent = category;
     categoriesPickUl.appendChild(categoryLi);
@@ -102,8 +78,6 @@ function createForm() {
   });
   let buttonContainer = document.createElement("div");
   buttonContainer.classList.add("buttonContainer");
-  buttonContainer.classList.add("boxShadows");
-  buttonContainer.classList.add("gradientConcave");
   form.appendChild(buttonContainer);
 
   let addTaskButton = document.createElement("button");
@@ -119,22 +93,18 @@ function createForm() {
     if (selectedCategory) {
       let name = taskName.value;
       let date = dateInput.value;
-      let description = descriptionInput.value;
 
-      let task = document.createElement("div");
+      let task = document.createElement("li");
+      task.classList.add("boxShadows");
       let taskNameElement = document.createElement("h2");
       let taskDetails = document.createElement("div");
       let taskDate = document.createElement("p");
-      let taskDescription = document.createElement("p");
 
       taskNameElement.textContent = name;
       taskDate.textContent = "Due for: " + (date || "Undefined Date");
-      taskDescription.textContent =
-        "Description: " + (description || "Undefined Description");
 
       task.appendChild(taskNameElement);
       taskDetails.appendChild(taskDate);
-      taskDetails.appendChild(taskDescription);
       task.appendChild(taskDetails);
 
       let categoryElement = document.querySelector(`.` + `${selectedCategory}`);
@@ -143,7 +113,6 @@ function createForm() {
 
       taskName.remove();
       dateInput.remove();
-      descriptionInput.remove();
       addTaskButton.remove();
       selectedCategory = null;
       open = false;
