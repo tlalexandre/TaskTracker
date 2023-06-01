@@ -1,17 +1,22 @@
 function createForm() {
   // Create a form to fill.
   let form = document.createElement("form");
+  let taskCreation = document.querySelector(".taskCreation");
   form.classList.add("taskForm");
   form.classList.add("boxShadows");
   form.classList.add("gradientConvexe");
-  noCategory.appendChild(form);
+  taskCreation.appendChild(form);
 
   let nameWrapper = document.createElement("div");
   nameWrapper.classList.add("nameWrapper");
   nameWrapper.classList.add("boxShadows");
   nameWrapper.classList.add("gradientConvexe");
-  nameWrapper.textContent = "Name";
   form.appendChild(nameWrapper);
+
+  let nameText = document.createElement("h2");
+  nameText.classList.add("nameText");
+  nameText.textContent = "Name";
+  nameWrapper.appendChild(nameText);
 
   // Create the input for the name of the task.
   let taskName = document.createElement("input");
@@ -26,15 +31,12 @@ function createForm() {
   dateWrapper.classList.add("dateWrapper");
   dateWrapper.classList.add("boxShadows");
   dateWrapper.classList.add("gradientConvexe");
-  dateWrapper.textContent = "Date";
   form.appendChild(dateWrapper);
-  // Create a button to add a date.
-  // let dateButton = document.createElement("button");
-  // dateButton.classList.add("dateButton");
-  // dateButton.classList.add("boxShadows");
-  // dateButton.classList.add("gradientConcave");
-  // dateButton.textContent = "Add Date";
-  // dateWrapper.appendChild(dateButton);
+
+  let dateText = document.createElement("h2");
+  dateText.classList.add("dateText");
+  dateText.textContent = "Date";
+  dateWrapper.appendChild(dateText);
 
   let dateInput = document.createElement("input");
   dateInput.type = "date";
@@ -44,32 +46,72 @@ function createForm() {
   dateInput.classList.add("gradientConvexe");
   dateWrapper.appendChild(dateInput);
 
+  let descriptionWrapper = document.createElement("div");
+  descriptionWrapper.classList.add("descriptionWrapper");
+  descriptionWrapper.classList.add("boxShadows");
+  descriptionWrapper.classList.add("gradientConvexe");
+  form.appendChild(descriptionWrapper);
+
+  let descriptionText = document.createElement("h2");
+  descriptionText.classList.add("descriptionText");
+  descriptionText.textContent = "Description";
+  descriptionWrapper.appendChild(descriptionText);
+
+  let descriptionInput = document.createElement("textarea");
+  descriptionInput.setAttribute("resize", "none");
+  descriptionInput.setAttribute("cols", "30");
+  descriptionInput.setAttribute("rows", "10");
+  descriptionInput.classList.add("descriptionInput");
+  descriptionInput.classList.add("boxShadows");
+  descriptionInput.classList.add("gradientConcave");
+  descriptionWrapper.appendChild(descriptionInput);
+
+  let buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("buttonContainer");
+  buttonContainer.classList.add("boxShadows");
+  buttonContainer.classList.add("gradientConcave");
+  form.appendChild(buttonContainer);
+
   let addTaskButton = document.createElement("button");
   addTaskButton.classList.add("addTaskButton");
   addTaskButton.classList.add("boxShadows");
   addTaskButton.classList.add("gradientConcave");
   addTaskButton.textContent = "Add Task";
-  form.appendChild(addTaskButton);
+  buttonContainer.appendChild(addTaskButton);
 
   addTaskButton.addEventListener("click", function (event) {
     event.preventDefault();
     let name = taskName.value;
-    let nameContainer = document.createElement("h2");
     let date = dateInput.value;
+    let description = descriptionInput.value;
 
+    let nameContainer = document.createElement("p");
     let dateContainer = document.createElement("p");
+    let descriptionContainer = document.createElement("p");
+
     nameContainer.classList.add("nameContainer");
     nameContainer.textContent = name;
+
     dateContainer.classList.add("dateContainer");
     if (date === "") {
       date = "Undefined Date";
     }
     dateContainer.textContent = date;
 
+    descriptionContainer.classList.add("descriptionContainer");
+    if (description === "") {
+      description = "Undefined Description";
+    }
+    descriptionContainer.textContent = description;
+
     nameWrapper.appendChild(nameContainer);
     dateWrapper.appendChild(dateContainer);
+    descriptionWrapper.appendChild(descriptionContainer);
+
+    dateText.textContent = "Due for";
     taskName.remove();
     dateInput.remove();
+    descriptionInput.remove();
     addTaskButton.remove();
     open = false;
   });
@@ -78,7 +120,7 @@ function createForm() {
   removeTaskButton.classList.add("boxShadows");
   removeTaskButton.classList.add("gradientConcave");
   removeTaskButton.textContent = "Remove";
-  form.appendChild(removeTaskButton);
+  buttonContainer.appendChild(removeTaskButton);
 
   removeTaskButton.addEventListener("click", function (event) {
     event.preventDefault();
@@ -100,6 +142,7 @@ newTask.addEventListener("click", function () {
     alert("Please complete the actual field before opening a new one.");
   }
 });
+let categoriesWrapper = document.querySelector(".categoriesWrapper");
 
 function createCategory() {
   let addCategoryButton = document.createElement("input");
@@ -108,17 +151,22 @@ function createCategory() {
   addCategoryButton.classList.add("gradientConcave");
   addCategoryButton.setAttribute("type", "text");
   addCategoryButton.setAttribute("placeholder", "Give a name to your category");
-  categories.appendChild(addCategoryButton);
+  categoriesWrapper.appendChild(addCategoryButton);
 
   addCategoryButton.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
       let titleCategory = addCategoryButton.value;
-      let category = document.createElement("ul");
-      category.textContent = titleCategory;
+      let category = document.createElement("div");
+      category.classList.add(`${titleCategory}`);
+      let categoryTitle = document.createElement("h2");
+      categoryTitle.textContent = `${titleCategory}`;
+      let categoryUl = document.createElement("ul");
       category.classList.add(`${titleCategory}`);
       category.classList.add("boxShadows");
       category.classList.add("gradientConcave");
-      categories.appendChild(category);
+      category.appendChild(categoryTitle);
+      category.appendChild(categoryUl);
+      categoriesWrapper.appendChild(category);
       addCategoryButton.remove();
       open = false;
     }
