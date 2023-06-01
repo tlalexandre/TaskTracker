@@ -52,6 +52,7 @@ h1 {
   height: 500px;
   flex-direction: column;
   justify-content: space-between;
+  transition: 2s linear;
 }
 
 .task-menu {
