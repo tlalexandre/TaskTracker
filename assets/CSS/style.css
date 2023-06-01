@@ -56,11 +56,11 @@ h1 {
 
 .task-menu {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 #newTask {
-  margin: 50px auto;
   font-size: 5rem;
   height: 100px;
   width: 100px;
@@ -71,17 +71,16 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  height: calc(500px + 1em);
-  width: 30%;
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-radius: 50px;
+  margin-bottom: 40px;
 }
 input,
 button {
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-family: "nunito", sans-serif;
   border: none;
   border-radius: 50px;
@@ -91,4 +90,20 @@ button {
   height: 90px;
   width: 90px;
   border-radius: 50%;
+}
+.taskName {
+  height: 40px;
+  text-align: center;
+}
+.dateInput {
+  font-size: 1.3rem;
+  font-family: "nunito", sans-serif;
+  border: none;
+  border-radius: 50px;
+  padding: 5px;
+}
+
+#categories {
+  display: flex;
+  justify-content: space-evenly;
 }
