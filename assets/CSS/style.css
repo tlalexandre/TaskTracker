@@ -7,205 +7,150 @@
   src: url(../fonts/Quicksand-Regular.ttf);
 }
 
-body {
+* {
   margin: 0;
   padding: 0;
-  list-style-type: circle;
+  list-style-type: none;
   font-family: "regular", sans-serif;
-  font-weight: 700;
-  background: url(../images/Freebie-GradientTextures-02.jpg);
-  background-size: cover;
-  color: rgb(245, 228, 228);
+  --color1: #ffffff;
+  --color2: #4259b1;
+  --color3: #003263;
 }
 
-#taskManager {
+body {
+  background-color: var(--color3);
+  color: var(--color3);
+}
+
+nav ul {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+  font-size: 32px;
+}
+
+nav ul li {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border-radius: 0 0 50px 50px;
+}
+
+.categories {
+  box-shadow: 0px 20px 0px #183d77;
+}
+
+.agenda {
+  background-color: var(--color2);
+  box-shadow: 0px 20px 0px rgba(66, 89, 177, 0.58);
+}
+
+.categories div,
+.agenda div {
+  background-color: var(--color1);
+  padding: 0 20px;
+  border-radius: 50px;
+  margin: 20px 0;
 }
 h1 {
-  font-size: 3rem;
-  font-family: "bold", sans-serif;
-  text-transform: uppercase;
+  margin-top: 50px;
+  text-align: center;
+  color: var(--color1);
+  font-size: 6rem;
+  text-decoration: underline;
+  text-underline-offset: 15px;
+  font-family: bold, sans-serif;
+  text-shadow: 4px 8px 10px rgba(66, 89, 177, 0.58);
 }
 
-.task-menu {
+main {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.task-menu button {
-  width: 30%;
-  height: 50px;
-  font-size: 1.3rem;
-  font-family: "regular", sans-serif;
-  background: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50px;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.22),
-    -8px -8px 12px rgba(255, 255, 255, 0.22);
-}
-.taskCreation {
+.heroWrapper {
+  margin: 50px 0;
   width: 100%;
-}
-.taskForm {
   display: flex;
   justify-content: space-between;
-  margin: 10px auto 40px;
-  height: inherit;
-
-  width: 77%;
-  padding: 20px;
-  /* text-transform: uppercase; */
-  font-family: "bold", sans-serif;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50px;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.22),
-    -8px -8px 12px rgba(255, 255, 255, 0.22);
+}
+.firstSentence,
+.secondSentence {
+  background-color: var(--color1);
+  color: var(--color2);
+  font-size: 3rem;
+  font-family: bold, sans-serif;
+  width: calc(25% - 50px);
+  border-radius: 0 50px 50px 0;
 }
 
-.boxShadows {
-  background: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.22),
-    -4px -4px 12px rgba(255, 255, 255, 0.22);
+.firstSentence {
+  padding: 50px 50px 50px 15px;
 }
 
-.nameWrapper,
-.dateWrapper,
-.categoriesPick,
-.buttonContainer {
-  border-radius: 50px;
-  width: 20%;
+.secondSentence {
+  border-radius: 50px 0 0 50px;
+  padding: 50px 15px 50px 50px;
 }
-.taskForm h2 {
-  padding: 3px;
-}
-
-.nameWrapper input,
-.dateWrapper input {
-  margin-bottom: 10px;
-  width: 80%;
-  border-radius: 50px;
-  text-align: center;
-  font-family: "regular", sans-serif;
-}
-
-.categoriesPick {
-  padding: 0px 20px;
-}
-
-.categoriesPickUl {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  width: 100%;
-  margin-left: -40px;
-}
-.categoriesPickUl li {
+.logo {
   width: 33%;
+  /* display: flex;
+  justify-content: center; */
 }
-.categoriesPickUl li button {
-  background: transparent;
-  border-radius: 50px;
-  width: 100%;
-  font-family: "bold", sans-serif;
-  text-align: center;
-  font-size: 0.8rem;
-  margin: 5px;
-  padding: 8px 6px;
-}
-
-.buttonContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.buttonContainer button {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  text-align: center;
-  font-family: "regular", sans-serif;
-
-  font-size: 0.9rem;
-  margin: 8px auto;
-}
-.addTaskButton {
-  background: rgb(0, 255, 95);
-  background: linear-gradient(
-    135deg,
-    rgb(6 154 61 / 0.28) 35%,
-    rgba(255, 255, 255, 0.28) 90%
-  );
-}
-.removeTaskButton {
-  background: rgb(0, 255, 95);
-  background: linear-gradient(
-    135deg,
-    rgb(154 6 6 / 0.28) 35%,
-    rgba(255, 255, 255, 0.28) 90%
-  );
-}
-.categories {
-  margin-bottom: 100px;
-}
-.categories > h2 {
-  text-align: center;
-  font-family: "bold", sans-serif;
-  font-size: 2rem;
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 4px;
-  margin-bottom: 56px;
-}
-.categoriesWrapper {
+.firstLayer {
   margin: 0 auto;
+  width: 25em;
+  height: 25em;
+  background: rgba(66, 89, 177, 0.38);
+  border-radius: 50%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 78%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.25);
 }
-.categoriesWrapper > div > h2 {
-  font-size: 1.6rem;
-  font-family: "bold", sans-serif;
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 4px;
-}
-.categoriesWrapper > div {
-  border-radius: 50px;
-  width: 15%;
-  padding: 0 20px;
-}
-.categoriesWrapper > div > ul {
+.secondLayer {
+  width: 21em;
+  height: 21em;
+  background: rgba(66, 89, 177, 0.38);
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.25);
 }
-.categoriesWrapper > div > ul > li {
-  background: transparent;
-  border-radius: 50px;
-  width: 100%;
-  font-family: "bold", sans-serif;
-  text-align: center;
-  font-size: 0.8rem;
-  margin: 0px 0px 15px -5px;
-  padding: 8px 6px;
+.thirdLayer {
+  width: 17em;
+  height: 17em;
+  background: rgba(66, 89, 177, 0.38);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.25);
+  position: relative;
 }
-.categoriesWrapper > div > ul > li > h2 {
-  font-size: 1rem;
-  font-family: "regular", sans-serif;
-  letter-spacing: 2px;
+.thirdLayer i {
+  position: absolute;
 }
-.categoriesWrapper > div > ul > li > div > p {
-  font-family: "regular", sans-serif;
-  font-size: 0.8rem;
+.fa-check {
+  font-size: 12rem;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+}
+.fa-pen {
+  font-size: 7rem;
+  left: 60%;
+  top: 45%;
+  transform: translateX(-50%);
+}
+
+#getStarted {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  margin: 0 auto;
+  font-size: 2rem;
+  color: var(--color2);
 }

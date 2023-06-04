@@ -4,31 +4,47 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/2a30a0d914.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./assets/CSS/style.css" />
     <title>Document</title>
   </head>
   <body>
-    <header></header>
-    <div id="taskManager">
-      <h1>Task Manager</h1>
-      <div class="task-menu">
-          <button id="newTask" class="gradientConcave boxShadows">New Task</button>
-            <button id="newCategory" class="gradientConcave boxShadows">
-              New Category
-            </button>
-        </div>
-      </div>
-      <div class="taskCreation"></div>
-      <div class="categories">
-        <h2>Categories</h2>
-        <div class="categoriesWrapper">
-          <div class="noCategory gradientConcave boxShadows">
-            <h2>No Category</h2>
-            <ul></ul>
+    <header>
+      <nav>
+        <ul>
+          <li class="categories">
+            <div>
+              <p>Categories</p>
+            </div>
+          </li>
+          <li class="agenda">
+            <div>
+              <p>Agenda</p>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <h1>Task Tracker</h1>
+    </header>
+    <main>
+      <div class="heroWrapper">
+        <div class="firstSentence">Unleash Your Productivity Potential</div>
+        <div class="logo">
+          <div class="firstLayer">
+            <div class="secondLayer">
+              <div class="thirdLayer">
+                <i class="fa-solid fa-check"></i>
+                <i class="fa-solid fa-pen"></i>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="secondSentence">Track and Accomplish Tasks with Ease!</div>
       </div>
-    </div>
-    <script src="./assets/JS/script.js"></script>
+      <button id="getStarted">Get Started</button>
+    </main>
   </body>
 </html>
