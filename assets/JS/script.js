@@ -1,6 +1,64 @@
 let addCategory = document.querySelector(".addCategory");
 let categoriesWrapper = document.querySelector(".categoriesWrapper");
 
+function saveData() {
+  let categories = Array.from(document.querySelectorAll(".newCategory")).map(
+    (category) => {
+      let categoryName = category.querySelector(".categoryName").textContent;
+      let tasks = Array.from(category.querySelectorAll(".newTask")).map(
+        (task) => {
+          let taskName = task.querySelector(
+            ".taskDetails > .taskName"
+          ).textContent;
+          let taskDate = task.querySelector(
+            ".taskDetails > .taskDate"
+          ).textContent;
+          return { name: taskName, date: taskDate };
+        }
+      );
+      return { name: categoryName, tasks: tasks };
+    }
+  );
+  localStorage.setItem("categories", JSON.stringify(categories));
+}
+
+function loadData() {
+  let savedData = localStorage.getItem("categories");
+  if (savedData) {
+    let categories = JSON.parse(savedData);
+    categories.forEach((category) => {
+      let newCategory = document.createElement("div");
+      newCategory.classList.add("newCategory");
+      categoriesWrapper.appendChild(newCategory);
+
+      let categoryNameHeading = document.createElement("h2");
+      categoryNameHeading.classList.add("categoryName");
+      categoryNameHeading.textContent = category.name;
+      newCategory.appendChild(categoryNameHeading);
+
+      category.tasks.forEach((task) => {
+        let newTask = document.createElement("div");
+        newTask.classList.add("newTask");
+        newCategory.appendChild(newTask);
+
+        let taskDetails = document.createElement("div");
+        taskDetails.classList.add("taskDetails");
+        newTask.appendChild(taskDetails);
+
+        let taskNameHeading = document.createElement("h3");
+        taskNameHeading.classList.add("taskName");
+        taskNameHeading.textContent = task.name;
+        taskDetails.appendChild(taskNameHeading);
+
+        let taskDateHeading = document.createElement("p");
+        taskDateHeading.classList.add("taskDate");
+        taskDateHeading.textContent = task.date;
+        taskDetails.appendChild(taskDateHeading);
+      });
+    });
+  }
+}
+
 function createCategory() {
   let newCategory = document.createElement("div");
   newCategory.classList.add("newCategory");
@@ -20,12 +78,14 @@ function createCategory() {
   categoryName.addEventListener("keyup", (event) => {
     if (event.key == "Enter") {
       setCategoryName(categoryName, newCategory);
+      saveData();
     }
   });
   categoriesWrapper.insertBefore(newCategory, categoriesWrapper.firstChild);
 
   addNewTask.addEventListener("click", () => {
     createTask(newCategory, addNewTask);
+    saveData();
   });
 }
 
@@ -67,6 +127,7 @@ function createTask(category, addNewTask) {
       addTaskNameToTask(taskName.value, taskDetails);
       taskName.remove();
       taskDate.focus();
+      saveData();
     }
   });
 
@@ -74,6 +135,7 @@ function createTask(category, addNewTask) {
     if (event.key == "Enter") {
       addTaskDateToTask(taskDate.value, taskDetails);
       taskDate.remove();
+      saveData();
     }
   });
 
@@ -95,3 +157,8 @@ function addTaskDateToTask(taskDate, taskDetails) {
 
   taskDetails.appendChild(date);
 }
+
+loadData();
+
+let categoriesList = localStorage.getItem(categories);
+console.log(categoriesList);
