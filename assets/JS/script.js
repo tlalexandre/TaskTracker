@@ -36,10 +36,15 @@ function loadData() {
       categoryNameHeading.textContent = category.name;
       newCategory.appendChild(categoryNameHeading);
 
+      let addNewTask = document.createElement("button");
+      addNewTask.classList.add("addNewTask");
+      addNewTask.textContent = "New Task";
+      newCategory.appendChild(addNewTask);
+
       category.tasks.forEach((task) => {
         let newTask = document.createElement("div");
         newTask.classList.add("newTask");
-        newCategory.appendChild(newTask);
+        newCategory.insertBefore(newTask, addNewTask);
 
         let taskDetails = document.createElement("div");
         taskDetails.classList.add("taskDetails");
@@ -55,6 +60,7 @@ function loadData() {
         taskDateHeading.textContent = task.date;
         taskDetails.appendChild(taskDateHeading);
       });
+      addNewTaskListener(addNewTask);
     });
   }
 }
@@ -85,6 +91,14 @@ function createCategory() {
 
   addNewTask.addEventListener("click", () => {
     createTask(newCategory, addNewTask);
+    saveData();
+  });
+  addNewTaskListener(addNewTask);
+}
+
+function addNewTaskListener(addNewTask) {
+  addNewTask.addEventListener("click", () => {
+    createTask(addNewTask.parentElement, addNewTask);
     saveData();
   });
 }
@@ -123,7 +137,7 @@ function createTask(category, addNewTask) {
   newTask.appendChild(taskDate);
 
   taskName.addEventListener("keyup", (event) => {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
       addTaskNameToTask(taskName.value, taskDetails);
       taskName.remove();
       taskDate.focus();
@@ -132,7 +146,7 @@ function createTask(category, addNewTask) {
   });
 
   taskDate.addEventListener("keyup", (event) => {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
       addTaskDateToTask(taskDate.value, taskDetails);
       taskDate.remove();
       saveData();
