@@ -42,6 +42,10 @@ function loadData() {
       addNewTask.textContent = "New Task";
       newCategory.appendChild(addNewTask);
 
+      categoryNameHeading.addEventListener("dblclick", () => {
+        removeCategory(newCategory);
+        saveData();
+      });
       category.tasks.forEach((task) => {
         let newTask = document.createElement("div");
         newTask.classList.add("newTask");
@@ -68,10 +72,10 @@ function loadData() {
           toggleTaskDone(newTask);
           saveData();
         });
-
-        let clickCount = 0;
-        const doubleClickDelay = 250;
-        newTask.add;
+        newTask.addEventListener("dblclick", () => {
+          removeTask(newTask);
+          saveData();
+        });
       });
       addNewTaskListener(addNewTask);
     });
@@ -86,7 +90,7 @@ function createCategory() {
   let categoryName = document.createElement("input");
   categoryName.classList.add("categoryNameInput");
   categoryName.setAttribute("type", "text");
-  categoryName.setAttribute("placeholder", `"Category Name"`);
+  categoryName.setAttribute("placeholder", "Category Name");
   newCategory.appendChild(categoryName);
 
   let addNewTask = document.createElement("button");
@@ -106,7 +110,6 @@ function createCategory() {
     createTask(newCategory, addNewTask);
     saveData();
   });
-  addNewTaskListener(addNewTask);
 }
 
 function addNewTaskListener(addNewTask) {
@@ -126,6 +129,10 @@ function setCategoryName(categoryNameInput, newCategory) {
   categoryNameHeading.classList.add("categoryName");
   categoryNameHeading.textContent = categoryNameValue;
 
+  categoryNameHeading.addEventListener("dblclick", () => {
+    removeCategory(newCategory);
+    saveData();
+  });
   newCategory.insertBefore(categoryNameHeading, newCategory.firstChild);
   categoryNameInput.remove();
 }
@@ -166,24 +173,18 @@ function createTask(category, addNewTask) {
     }
   });
 
-  newTask.addEventListener("click", () => {
+  newTask.addEventListener("dblclick", () => {
+    removeTask(newTask);
+    saveData();
+  });
+  newTask.addEventListener("click", (event) => {
+    if (event.target.tagName === "INPUT") {
+      return;
+    }
     toggleTaskDone(taskDetails);
     saveData();
   });
 
-  let clickCount = 0;
-  const doubleClickDelay = 250;
-  newTask.addEventListener("click", () => {
-    clickCount++;
-    if (clickCount === 1) {
-      setTimeout(() => {
-        clickCount = 0;
-      }, doubleClickDelay);
-    } else if (clickCount === 2) {
-      removeTask(newTask);
-      clickCount = 0;
-    }
-  });
   category.insertBefore(newTask, addNewTask);
 }
 
@@ -196,6 +197,10 @@ function removeTask(task) {
   let category = task.parentElement;
   category.removeChild(task);
   saveData();
+}
+
+function removeCategory(category) {
+  categoriesWrapper.removeChild(category);
 }
 
 function addTaskNameToTask(taskName, taskDetails) {
