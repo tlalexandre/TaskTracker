@@ -178,7 +178,7 @@ main {
 }
 
 .categoriesWrapper {
-  /* width: 80%; */
+  width: 90vw;
   margin: 0 auto;
   columns: 4;
   column-gap: 10px;

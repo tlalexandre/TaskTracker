@@ -1,18 +1,16 @@
+// Selectors
 let addCategory = document.querySelector(".addCategory");
 let categoriesWrapper = document.querySelector(".categoriesWrapper");
 
+// Save data from categories and tasks in LocalStorage
 function saveData() {
   let categories = Array.from(document.querySelectorAll(".newCategory")).map(
     (category) => {
       let categoryName = category.querySelector(".categoryName").textContent;
       let tasks = Array.from(category.querySelectorAll(".newTask")).map(
         (task) => {
-          let taskName = task.querySelector(
-            ".taskDetails > .taskName"
-          ).textContent;
-          let taskDate = task.querySelector(
-            ".taskDetails > .taskDate"
-          ).textContent;
+          let taskName = task.querySelector(".taskName").textContent;
+          let taskDate = task.querySelector(" .taskDate").textContent;
           return { name: taskName, date: taskDate };
         }
       );
@@ -21,6 +19,8 @@ function saveData() {
   );
   localStorage.setItem("categories", JSON.stringify(categories));
 }
+
+// Load data saved in LocalStorage
 
 function loadData() {
   let savedData = localStorage.getItem("categories");
@@ -173,6 +173,3 @@ function addTaskDateToTask(taskDate, taskDetails) {
 }
 
 loadData();
-
-let categoriesList = localStorage.getItem(categories);
-console.log(categoriesList);
