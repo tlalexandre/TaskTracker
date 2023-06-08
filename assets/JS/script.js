@@ -11,7 +11,8 @@ function saveData() {
         (task) => {
           let taskName = task.querySelector(".taskName").textContent;
           let taskDate = task.querySelector(" .taskDate").textContent;
-          return { name: taskName, date: taskDate };
+          let taskDone = task.classList.contains("done");
+          return { name: taskName, date: taskDate, done: taskDone };
         }
       );
       return { name: categoryName, tasks: tasks };
@@ -44,6 +45,9 @@ function loadData() {
       category.tasks.forEach((task) => {
         let newTask = document.createElement("div");
         newTask.classList.add("newTask");
+        if (task.done) {
+          newTask.classList.add("done");
+        }
         newCategory.insertBefore(newTask, addNewTask);
 
         let taskDetails = document.createElement("div");
@@ -59,6 +63,15 @@ function loadData() {
         taskDateHeading.classList.add("taskDate");
         taskDateHeading.textContent = task.date;
         taskDetails.appendChild(taskDateHeading);
+
+        newTask.addEventListener("click", () => {
+          toggleTaskDone(newTask);
+          saveData();
+        });
+
+        let clickCount = 0;
+        const doubleClickDelay = 250;
+        newTask.add;
       });
       addNewTaskListener(addNewTask);
     });
@@ -153,7 +166,36 @@ function createTask(category, addNewTask) {
     }
   });
 
+  newTask.addEventListener("click", () => {
+    toggleTaskDone(taskDetails);
+    saveData();
+  });
+
+  let clickCount = 0;
+  const doubleClickDelay = 250;
+  newTask.addEventListener("click", () => {
+    clickCount++;
+    if (clickCount === 1) {
+      setTimeout(() => {
+        clickCount = 0;
+      }, doubleClickDelay);
+    } else if (clickCount === 2) {
+      removeTask(newTask);
+      clickCount = 0;
+    }
+  });
   category.insertBefore(newTask, addNewTask);
+}
+
+function toggleTaskDone(taskDetails) {
+  taskDetails.classList.toggle("done");
+  saveData();
+}
+
+function removeTask(task) {
+  let category = task.parentElement;
+  category.removeChild(task);
+  saveData();
 }
 
 function addTaskNameToTask(taskName, taskDetails) {
