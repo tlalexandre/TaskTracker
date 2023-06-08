@@ -220,3 +220,17 @@ function addTaskDateToTask(taskDate, taskDetails) {
 }
 
 loadData();
+
+function loadAgendaData() {
+  let savedData = localStorage.getItem("categories");
+  if (savedData) {
+    let categories = JSON.parse(savedData);
+    let tasks = [];
+
+    categories.forEach((category) => {
+      category.tasks.forEach((task) => {
+        tasks.push(task);
+      });
+    });
+  }
+}
