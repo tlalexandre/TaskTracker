@@ -182,14 +182,14 @@ main {
   margin: 0 auto;
   margin-top: 50px;
   columns: 4;
-  column-gap: 50px;
+  column-gap: 10px;
 }
 .newCategory {
   width: 250px;
   background-color: var(--color3);
   border-radius: 20px;
   padding: 10px;
-  min-width: 320px;
+  /* min-width: 320px; */
   margin-bottom: 10px;
   break-inside: avoid;
 }
