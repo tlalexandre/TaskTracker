@@ -165,12 +165,10 @@ function createTask(category, addNewTask) {
     }
   });
 
-  taskDate.addEventListener("keyup", (event) => {
-    if (event.key === "Enter") {
-      addTaskDateToTask(taskDate.value, taskDetails);
-      taskDate.remove();
-      saveData();
-    }
+  taskDate.addEventListener("change", (event) => {
+    addTaskDateToTask(taskDate.value, taskDetails);
+    taskDate.remove();
+    saveData();
   });
 
   newTask.addEventListener("dblclick", () => {
@@ -181,26 +179,31 @@ function createTask(category, addNewTask) {
     if (event.target.tagName === "INPUT") {
       return;
     }
-    toggleTaskDone(taskDetails);
+    toggleTaskDone(newTask);
     saveData();
   });
 
   category.insertBefore(newTask, addNewTask);
 }
 
-function toggleTaskDone(taskDetails) {
-  taskDetails.classList.toggle("done");
+function toggleTaskDone(newTask) {
+  newTask.classList.toggle("done");
   saveData();
 }
 
 function removeTask(task) {
-  let category = task.parentElement;
-  category.removeChild(task);
-  saveData();
+  if (confirm("Are you sure you want to delete this task?")) {
+    let category = task.parentElement;
+    category.removeChild(task);
+    saveData();
+  }
 }
 
 function removeCategory(category) {
-  categoriesWrapper.removeChild(category);
+  if (confirm("Are you sure you want to delete this category?")) {
+    categoriesWrapper.removeChild(category);
+    saveData();
+  }
 }
 
 function addTaskNameToTask(taskName, taskDetails) {

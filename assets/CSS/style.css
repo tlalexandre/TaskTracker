@@ -189,21 +189,25 @@ main {
   background-color: var(--color3);
   border-radius: 20px;
   padding: 10px;
-  /* min-width: 320px; */
-  margin-bottom: 10px;
+  margin: 10px auto;
   break-inside: avoid;
+  display: flex; /* Added */
+  flex-wrap: wrap; /* Added */
+  flex-direction: column;
 }
 .categoryName {
   color: var(--color1);
+  margin-bottom: 20px;
 }
 .categoryNameInput {
   max-width: inherit;
-  margin: 0 auto 10px 0;
+  margin: 0 auto;
   border-radius: 20px;
   padding: 10px;
 }
 .categoryName input::placeholder {
   font-size: 4rem;
+  text-align: center;
 }
 .newTask {
   display: flex;
@@ -212,13 +216,17 @@ main {
   background-color: var(--color1);
   margin: 5px 10px 5px 0;
   border-radius: 20px;
-  height: 50px;
+  height: 70px;
   padding: 5px;
+  flex-grow: 1; /* Added */
+  flex-basis: calc((100% / 4) - 10px); /* Added */
+  flex-shrink: 0; /* Added */
 }
 
 .newTask input,
 .newTask input::placeholder {
   height: 20px;
+  width: 70%;
   border-radius: 20px;
   background-color: var(--color2);
   color: var(--color1);
@@ -227,21 +235,6 @@ main {
   margin: 0 10px;
 }
 
-.actionButtons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: inherit;
-}
-.actionButtons button {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: var(--color2);
-  color: var(--color1);
-  border: none;
-}
 .addNewTask {
   width: 33%;
   margin: 10px auto;
@@ -250,6 +243,22 @@ main {
   color: var(--color2);
 }
 .done {
-  text-decoration: line-through;
-  color: gray;
+  background-color: green;
+  color: var(--color1);
+}
+
+@media screen and (max-width: 1300px) {
+  .categoriesWrapper {
+    columns: 3;
+  }
+}
+@media screen and (max-width: 970px) {
+  .categoriesWrapper {
+    columns: 2;
+  }
+}
+@media screen and (max-width: 670px) {
+  .categoriesWrapper {
+    columns: 1;
+  }
 }
