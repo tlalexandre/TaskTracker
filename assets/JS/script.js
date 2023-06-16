@@ -166,7 +166,16 @@ function createTask(category, addNewTask) {
   });
 
   taskDate.addEventListener("change", (event) => {
-    addTaskDateToTask(taskDate.value, taskDetails);
+    const inputDate = new Date(taskDate.value);
+    const dayOfWeek = inputDate.toLocaleDateString("en-US", {
+      weekday: "long",
+    });
+    const date = inputDate.getDate();
+    const month = inputDate.toLocaleDateString("en-US", { month: "long" });
+    const dateSuffix = getDateSuffix(date);
+
+    const formattedDate = `For ${dayOfWeek}, ${date}${dateSuffix} of ${month}`;
+    addTaskDateToTask(formattedDate, taskDetails);
     taskDate.remove();
     saveData();
   });
@@ -192,11 +201,20 @@ function toggleTaskDone(newTask) {
 }
 
 function removeTask(task) {
-  if (confirm("Are you sure you want to delete this task?")) {
+  const deleteConfirmationText = "Are you sure you want to delete this task?";
+
+  // Display the deletion confirmation text in the task
+  task.textContent = deleteConfirmationText;
+  // Add styling to indicate deletion
+  task.style.backgroundColor = "red";
+  task.style.fontWeight = "bold";
+
+  // Add a click event listener to handle the actual deletion
+  task.addEventListener("click", () => {
     let category = task.parentElement;
     category.removeChild(task);
     saveData();
-  }
+  });
 }
 
 function removeCategory(category) {
@@ -222,18 +240,21 @@ function addTaskDateToTask(taskDate, taskDetails) {
   taskDetails.appendChild(date);
 }
 
-loadData();
+function getDateSuffix(date) {
+  if (date >= 11 && date <= 13) {
+    return "th";
+  }
 
-function loadAgendaData() {
-  let savedData = localStorage.getItem("categories");
-  if (savedData) {
-    let categories = JSON.parse(savedData);
-    let tasks = [];
-
-    categories.forEach((category) => {
-      category.tasks.forEach((task) => {
-        tasks.push(task);
-      });
-    });
+  switch (date % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
   }
 }
+
+loadData();

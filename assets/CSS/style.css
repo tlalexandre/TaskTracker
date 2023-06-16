@@ -232,7 +232,8 @@ main {
   color: var(--color1);
   border: none;
   padding: 5px;
-  margin: 0 10px;
+  margin: 0 5px;
+  font-size: 0.7rem;
 }
 
 .addNewTask {
@@ -243,8 +244,7 @@ main {
   color: var(--color2);
 }
 .done {
-  background-color: green;
-  color: var(--color1);
+  filter: opacity(0.4);
 }
 
 @media screen and (max-width: 1300px) {
