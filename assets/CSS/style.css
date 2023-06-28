@@ -161,20 +161,24 @@ main {
 
 /* Categories Pages */
 .bgCategories {
-  background-color: var(--color1);
+  background: url(../images/martin-martz-rMRT4hF-Fsg-unsplash.jpg);
+  background-size: cover;
   min-height: 100vh;
 }
 .addCategory {
   width: 100px;
   height: 100px;
-  background-color: var(--color3);
+  background-color: transparent;
   color: var(--color1);
+  border: none;
   border-radius: 50%;
+  box-shadow: var(--color1) -2px 2px 13px;
   font-size: 7rem;
   margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .categoriesWrapper {
@@ -186,34 +190,50 @@ main {
 }
 .newCategory {
   width: 250px;
-  background-color: var(--color3);
+  backdrop-filter: blur(5px);
+  /* border: 1px solid var(--color1); */
   border-radius: 20px;
   padding: 10px;
-  margin: 10px auto;
+  margin-bottom: 50px;
   break-inside: avoid;
   display: flex; /* Added */
   flex-wrap: wrap; /* Added */
   flex-direction: column;
+  box-shadow: var(--color1) -5px 2px 13px;
 }
 .categoryName {
   color: var(--color1);
+  font-size: 1.5rem;
   margin-bottom: 20px;
 }
 .categoryNameInput {
-  max-width: inherit;
+  width: 90%;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color1);
+  font-weight: 900;
+  font-size: 1.5rem;
+  border: none;
+
   margin: 0 auto;
   border-radius: 20px;
   padding: 10px;
 }
+.categoryNameInput::placeholder {
+  font-size: 1.5rem;
+  color: var(--color1);
+}
 .categoryName input::placeholder {
-  font-size: 4rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 .newTask {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: var(--color1);
+  background-color: rgb(82 135 187 / 20%);
+  border: none;
+  color: var(--color1);
   margin: 5px 10px 5px 0;
   border-radius: 20px;
   height: 70px;
@@ -221,14 +241,17 @@ main {
   flex-grow: 1; /* Added */
   flex-basis: calc((100% / 4) - 10px); /* Added */
   flex-shrink: 0; /* Added */
+  cursor: pointer;
 }
-
+.newTask input {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 .newTask input,
 .newTask input::placeholder {
   height: 20px;
   width: 70%;
+
   border-radius: 20px;
-  background-color: var(--color2);
   color: var(--color1);
   border: none;
   padding: 5px;
@@ -239,12 +262,17 @@ main {
 .addNewTask {
   width: 33%;
   margin: 10px auto;
+  border: 1px solid var(--color1);
   border-radius: 20px;
   height: 30px;
-  color: var(--color2);
+  background: transparent;
+  backdrop-filter: blur(5px);
+  color: var(--color1);
+  box-shadow: var(--color1) 0px 0px 8px;
+  cursor: pointer;
 }
 .done {
-  filter: opacity(0.4);
+  background-color: rgb(54 255 0 / 26%);
 }
 
 @media screen and (max-width: 1300px) {

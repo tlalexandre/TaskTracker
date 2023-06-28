@@ -76,6 +76,7 @@ function loadData() {
           removeTask(newTask);
           saveData();
         });
+        newTask.style.border = "1px solid white";
       });
       addNewTaskListener(addNewTask);
     });
@@ -90,7 +91,7 @@ function createCategory() {
   let categoryName = document.createElement("input");
   categoryName.classList.add("categoryNameInput");
   categoryName.setAttribute("type", "text");
-  categoryName.setAttribute("placeholder", "Category Name");
+  categoryName.setAttribute("placeholder", "New Category");
   newCategory.appendChild(categoryName);
 
   let addNewTask = document.createElement("button");
@@ -162,11 +163,17 @@ function createTask(category, addNewTask) {
       taskName.remove();
       taskDate.focus();
       saveData();
+      newTask.style.border = "1px solid white";
     }
   });
 
   taskDate.addEventListener("change", (event) => {
-    const inputDate = new Date(taskDate.value);
+    const today = new Date().toISOString().split("T")[0];
+    let inputDate = new Date(taskDate.value);
+
+    if (inputDate < new Date(today)) {
+      inputDate = new Date(today);
+    }
     const dayOfWeek = inputDate.toLocaleDateString("en-US", {
       weekday: "long",
     });
@@ -178,6 +185,7 @@ function createTask(category, addNewTask) {
     addTaskDateToTask(formattedDate, taskDetails);
     taskDate.remove();
     saveData();
+    newTask.style.border = "1px solid white";
   });
 
   newTask.addEventListener("dblclick", () => {
@@ -202,19 +210,42 @@ function toggleTaskDone(newTask) {
 
 function removeTask(task) {
   const deleteConfirmationText = "Are you sure you want to delete this task?";
+  const originalTaskName = task.querySelector(".taskName").textContent;
+  const originalTaskDate = task.querySelector(".taskDate").textContent;
 
-  // Display the deletion confirmation text in the task
-  task.textContent = deleteConfirmationText;
-  // Add styling to indicate deletion
-  task.style.backgroundColor = "red";
+  task.style.backgroundColor = " rgb(187 82 82 / 46%)";
   task.style.fontWeight = "bold";
 
-  // Add a click event listener to handle the actual deletion
-  task.addEventListener("click", () => {
+  const confirmButton = document.createElement("button");
+  confirmButton.classList.add("confirmButton");
+  confirmButton.textContent = "V";
+  const cancelButton = document.createElement("button");
+  cancelButton.classList.add("cancelButton");
+  cancelButton.textContent = "X";
+
+  task.innerHTML = `<p>${deleteConfirmationText}</p>`;
+  task.appendChild(confirmButton);
+  task.appendChild(cancelButton);
+
+  confirmButton.addEventListener("click", () => {
     let category = task.parentElement;
     category.removeChild(task);
     saveData();
   });
+
+  cancelButton.addEventListener("click", () => {
+    task.innerHTML = ""; // Clear the task content
+    const taskDetails = document.createElement("div");
+    taskDetails.classList.add("taskDetails");
+    task.appendChild(taskDetails);
+    addTaskNameToTask(originalTaskName, taskDetails);
+    addTaskDateToTask(originalTaskDate, taskDetails);
+    saveData();
+    task.style.border = "1px solid white";
+    task.style.backgroundColor = "rgb(82 135 187 / 20%)";
+  });
+
+  // Add styling to indicate deletion
 }
 
 function removeCategory(category) {
