@@ -1,7 +1,11 @@
 // Selectors
 let addCategory = document.querySelector(".addCategory");
 let categoriesWrapper = document.querySelector(".categoriesWrapper");
+let getStartedButton = document.getElementById("getStarted");
 
+getStartedButton.addEventListener("click", function () {
+  window.scrollBy(0, window.innerHeight);
+});
 // Save data from categories and tasks in LocalStorage
 function saveData() {
   let categories = Array.from(document.querySelectorAll(".newCategory")).map(

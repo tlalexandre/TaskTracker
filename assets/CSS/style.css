@@ -18,26 +18,18 @@
 }
 
 body {
-  background-color: var(--color3);
+  background: url(../images/martin-martz-rMRT4hF-Fsg-unsplash.jpg);
+  background-size: cover;
   color: var(--color3);
 }
 /* Front Page Style */
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  font-size: 32px;
-}
-
-nav ul li {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  border-radius: 0 0 50px 50px;
+header {
+  height: 100vh;
 }
 
 .categories {
   box-shadow: 0px 20px 0px #183d77;
-  background-color: var(--color3);
+  background-color: rgba(66, 89, 177, 0.3);
 }
 
 .agenda {
@@ -60,14 +52,14 @@ h1 {
   margin-top: 50px;
   text-align: center;
   color: var(--color1);
-  font-size: 6rem;
+  font-size: 5rem;
   text-decoration: underline;
   text-underline-offset: 15px;
   font-family: bold, sans-serif;
   text-shadow: 4px 8px 10px rgba(66, 89, 177, 0.58);
 }
 
-main {
+.heroContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,36 +67,37 @@ main {
 }
 
 .heroWrapper {
-  margin: 50px 0;
+  margin: 100px 0;
   width: 100%;
+}
+
+.instructions {
   display: flex;
   justify-content: space-between;
 }
 .firstSentence,
 .secondSentence {
-  background-color: var(--color1);
-  color: var(--color2);
-  font-size: 3rem;
+  margin: 40px 0;
+  backdrop-filter: blur(5px);
+  color: var(--color1);
+  font-size: 2.4rem;
   font-family: bold, sans-serif;
-  width: calc(25% - 50px);
+  width: 20%;
+  border: 1px solid var(--color1);
   border-radius: 0 50px 50px 0;
+  box-shadow: var(--color1) -5px 2px 13px;
+  padding: 40px;
 }
-
-.firstSentence {
-  padding: 50px 50px 50px 15px;
-}
-
 .secondSentence {
   border-radius: 50px 0 0 50px;
-  padding: 50px 15px 50px 50px;
 }
 .logo {
-  width: 33%;
+  min-width: 25%;
 }
 .firstLayer {
   margin: 0 auto;
-  width: 25em;
-  height: 25em;
+  width: 21rem;
+  height: 21rem;
   background: rgba(66, 89, 177, 0.38);
   border-radius: 50%;
   display: flex;
@@ -113,8 +106,8 @@ main {
   box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.25);
 }
 .secondLayer {
-  width: 21em;
-  height: 21em;
+  width: 17rem;
+  height: 17rem;
   background: rgba(66, 89, 177, 0.38);
   border-radius: 50%;
   display: flex;
@@ -123,8 +116,8 @@ main {
   box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.25);
 }
 .thirdLayer {
-  width: 17em;
-  height: 17em;
+  width: 13rem;
+  height: 13rem;
   background: rgba(66, 89, 177, 0.38);
   border-radius: 50%;
   display: flex;
@@ -137,13 +130,13 @@ main {
   position: absolute;
 }
 .fa-check {
-  font-size: 12rem;
+  font-size: 9rem;
   left: 50%;
   top: 10%;
   transform: translateX(-50%);
 }
 .fa-pen {
-  font-size: 7rem;
+  font-size: 5rem;
   left: 60%;
   top: 45%;
   transform: translateX(-50%);
@@ -153,7 +146,7 @@ main {
   width: 145px;
   height: 145px;
   border-radius: 50%;
-  margin: 0 auto;
+  margin: 50px auto;
   font-size: 2rem;
   color: var(--color2);
   cursor: pointer;
@@ -161,9 +154,25 @@ main {
 
 /* Categories Pages */
 .bgCategories {
-  background: url(../images/martin-martz-rMRT4hF-Fsg-unsplash.jpg);
-  background-size: cover;
   min-height: 100vh;
+}
+
+.createCategory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+}
+.createCategory p {
+  color: var(--color1);
+  margin-top: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  visibility: hidden;
+}
+.createCategory:hover p {
+  visibility: visible;
 }
 .addCategory {
   width: 100px;
@@ -194,6 +203,8 @@ main {
   /* border: 1px solid var(--color1); */
   border-radius: 20px;
   padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 50px;
   break-inside: avoid;
   display: flex; /* Added */
@@ -274,8 +285,21 @@ main {
 .done {
   background-color: rgb(54 255 0 / 26%);
 }
+footer {
+  border-top: 1px solid var(--color1);
+}
+footer p {
+  color: var(--color1);
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.3rem;
+}
 
 @media screen and (max-width: 1300px) {
+  .firstSentence,
+  .secondSentence {
+    font-size: 2.5rem;
+  }
   .categoriesWrapper {
     columns: 3;
   }
@@ -284,9 +308,24 @@ main {
   .categoriesWrapper {
     columns: 2;
   }
+  .firstSentence,
+  .secondSentence {
+    font-size: 1.7rem;
+    padding: 20px;
+  }
 }
 @media screen and (max-width: 670px) {
+  header h1 {
+    font-size: 3rem;
+  }
+
   .categoriesWrapper {
     columns: 1;
+  }
+}
+@media screen and (max-width: 500px) {
+  .firstSentence,
+  .secondSentence {
+    font-size: 1.3rem;
   }
 }

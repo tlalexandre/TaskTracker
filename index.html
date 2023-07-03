@@ -9,44 +9,46 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./assets/CSS/style.css" />
-    <title>Document</title>
+    <title>Task Tracker</title>
   </head>
   <body>
     <header>
-      <nav>
-        <ul>
-          <li class="categories">
-            <div>
-              <a href="categories.html">Categories</a>
-            </div>
-          </li>
-          <li class="agenda">
-            <div>
-              <a href="agenda.html">Agenda</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
       <h1>Task Tracker</h1>
-    </header>
-    <main>
-      <div class="heroWrapper">
-        <div class="firstSentence">Unleash Your Productivity Potential</div>
-        <div class="logo">
-          <div class="firstLayer">
-            <div class="secondLayer">
-              <div class="thirdLayer">
-                <i class="fa-solid fa-check"></i>
-                <i class="fa-solid fa-pen"></i>
+      <div class="heroContainer">
+        <div class="heroWrapper">
+          <div class="logo">
+            <div class="firstLayer">
+              <div class="secondLayer">
+                <div class="thirdLayer">
+                  <i class="fa-solid fa-check"></i>
+                  <i class="fa-solid fa-pen"></i>
+                </div>
               </div>
             </div>
           </div>
+          <div class="instructions">
+            <div class="firstSentence">Click on a task to validate it</div>
+            <button id="getStarted">Get Started</button>
+            <div class="secondSentence">Click twice to delete a task</div>
+          </div>
         </div>
-        <div class="secondSentence">Track and Accomplish Tasks with Ease!</div>
       </div>
-      <button id="getStarted">
-        <a href="categories.html">Get Started</a>
-      </button>
-    </main>
+    </header>
+    <div class="bgCategories">
+      <main>
+        <div class="createCategory">
+          <button class="addCategory">+</button>
+          <p>Create Category</p>
+        </div>
+        <div class="categoriesWrapper"></div>
+      </main>
+    </div>
+    <footer>
+      <p>Developed by Tanguy L'Alexandre</p>
+      <ul>
+        <li><a href=""></a></li>
+      </ul>
+    </footer>
+    <script src="./assets/JS/script.js"></script>
   </body>
 </html>
