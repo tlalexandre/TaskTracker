@@ -248,15 +248,37 @@ function removeTask(task) {
     task.style.border = "1px solid white";
     task.style.backgroundColor = "rgb(82 135 187 / 20%)";
   });
-
-  // Add styling to indicate deletion
 }
 
 function removeCategory(category) {
-  if (confirm("Are you sure you want to delete this category?")) {
-    categoriesWrapper.removeChild(category);
+  const deleteCategoryText = "Are you sure you want to delete that category?";
+  const categoryName = category.querySelector(".categoryName");
+  let originalCategoryName = categoryName.textContent;
+  categoryName.innerHTML = deleteCategoryText;
+  categoryName.style.color = "white";
+  categoryName.style.background = "rgb(187 82 82 / 46%)";
+
+  const confirmButton = document.createElement("button");
+  confirmButton.classList.add("confirmButton");
+  confirmButton.textContent = "Confirm";
+  const cancelButton = document.createElement("button");
+  cancelButton.classList.add("cancelButton");
+  cancelButton.textContent = "Cancel";
+
+  categoryName.appendChild(confirmButton);
+  categoryName.appendChild(cancelButton);
+
+  confirmButton.addEventListener("click", () => {
+    let categoryWrapper = category.parentElement;
+    categoryWrapper.removeChild(category);
     saveData();
-  }
+  });
+
+  cancelButton.addEventListener("click", () => {
+    categoryName.textContent = originalCategoryName;
+    categoryName.style.backgroundColor = "transparent";
+    saveData();
+  });
 }
 
 function addTaskNameToTask(taskName, taskDetails) {
