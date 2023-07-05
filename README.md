@@ -49,7 +49,7 @@ Task Tracker is a website that allows you to get a better management of the diff
 
 
 
--__Data Storage__
+- __Data Storage__
 
     -__How is the Data saved?__
         -To save the different categories and tasks created by the user, I used the local storage of the browser.
@@ -61,7 +61,7 @@ Task Tracker is a website that allows you to get a better management of the diff
     -__How is the Data loaded?__
         -When you open the website, the data in the local storage will be retrieve and the program will run through the differents arrays to display the correct information. 
 
-![LocalStorage](./readme/LocalStorage.png)
+    ![LocalStorage](./readme/LocalStorage.png)
 
 ### Features Left to Implement
 
