@@ -1,16 +1,10 @@
 # Task Tracker
 
-<!-- In this section, you will include one or two paragraphs providing an overview of your project. Essentially, this part is your sales pitch. At this stage, you should have a name for your project so use it! Don’t introduce the project as a Portfolio project for the diploma. In this section, describe what the project hopes to accomplish, who it is intended to target and how it will be useful to the target audience. 
-
-For example, Love Maths is a site that hopes to demonstrate how pure JavaScript works in a real-world context. The site will be targeted toward people who not only love to implement more advanced JavaScript concepts but also maths. Love Maths is a fully responsive JavaScript maths game that will allow users to add, subtract, multiply and divide numbers.  -->
-
 Task Tracker is a website that allows you to get a better management of the differents tasks, for professionals or private usage. It's built using Javascript, HTML & CSS. This website is fully responsive, it allows users to create their own categories, their own tasks, and to mark them as complete or delete them.
 
 ![Responsive](./readme/TaskTrackerResponsive.png)
 
 ## Features 
-
-<!-- In this section, you should go over the different parts of your project, and describe each in a sentence or so. You will need to explain what value each of the features provides for the user, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things. -->
 
 ### Existing Features
 
@@ -21,48 +15,52 @@ Task Tracker is a website that allows you to get a better management of the diff
 ![Logo]((./readme/TaskTrackerHeading.png)
 
 - __The Category Area__
+  
     -__Category Creation__
         -This area will allow the user to create categories. The user will be able to easily see the icon to create a new category, and a subtitle is provided to guide the user.
         -The user will be able to personalise the name of his category, by entering the name wanted in the input when he creates a new category.
 
-![CategoryCreation](./readme/CategoryCreation.png)
+    ![CategoryCreation](./readme/CategoryCreation.png)
 
-    -__Category Deletion__
+    -__Category Completion__
         -By double clicking on the category, the user can delete a category. This will delete all the tasks inside the category as well. 
         -The user have to confirm the deletion of the category by clicking on the Confirm button, to avoid any missclick.
         -If the user clicks on the Cancel button, then the original title is displayed again. 
 
-![CategoryDeletion](./readme/CategoryDeletion.png)
+    ![CategoryDeletion](./readme/CategoryDeletion.png)
 
 
 - __The Task Section__
+  
     -__Task Creation__
         -This area allow the user to create personalised tasks inside each category. The user will be able to easily create tasks by clicking on the New Task button.
 
-        ![TaskCreation](./readme/TaskCreation.png)
+    ![TaskCreation](./readme/TaskCreation.png)
 
     -__Task Completion__
         -By clicking a single time on the tasks, the user will be able to tell that a task has been completed as the background of the task will turn green. 
 
-         ![TaskCompletion](./readme/TaskCompletion.png)
+    ![TaskCompletion](./readme/TaskCompletion.png)
 
     -__Task Deletion__
         -By double clicking on the task, the user can delete it. To avoid any click error, the user will have to confirm the deletion by clicking on the "V" button, or the "X" one to restore the task as it was. 
 
-         ![TaskDeletion](./readme/TaskDeletion.png)
+    ![TaskDeletion](./readme/TaskDeletion.png)
 
 
 
 -__Data Storage__
+
     -__How is the Data saved?__
         -To save the different categories and tasks created by the user, I used the local storage of the browser.
         -Whenever a new category or task is created, its data is added in the local storage, in an array. 
         -Whenever the user deletes a category or a task, the data is removed from the array they belong to.
         -On every action, the data is saved, this allows the user to have a dynamic website.
         -One array contains a list of the differents categories, and each task is in an array that belongs to the category where the task has been created.
+        
     -__How is the Data loaded?__
         -When you open the website, the data in the local storage will be retrieve and the program will run through the differents arrays to display the correct information. 
-        
+
 ![LocalStorage](./readme/LocalStorage.png)
 
 ### Features Left to Implement
