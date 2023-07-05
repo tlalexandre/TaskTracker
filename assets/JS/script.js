@@ -244,9 +244,9 @@ function removeTask(task) {
     task.appendChild(taskDetails);
     addTaskNameToTask(originalTaskName, taskDetails);
     addTaskDateToTask(originalTaskDate, taskDetails);
-    saveData();
     task.style.border = "1px solid white";
     task.style.backgroundColor = "rgb(82 135 187 / 20%)";
+    saveData();
   });
 }
 
