@@ -24,7 +24,7 @@ body {
 }
 /* Front Page Style */
 header {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .categories {
@@ -67,13 +67,14 @@ h1 {
 }
 
 .heroWrapper {
-  margin: 100px 0;
+  margin: 50px 0;
   width: 100%;
 }
 
 .instructions {
   display: flex;
   justify-content: space-between;
+  /* margin-bottom: 100px; */
 }
 .firstSentence,
 .secondSentence {
@@ -96,8 +97,8 @@ h1 {
 }
 .firstLayer {
   margin: 0 auto;
-  width: 21rem;
-  height: 21rem;
+  width: 20rem;
+  height: 20rem;
   background: rgba(66, 89, 177, 0.38);
   border-radius: 50%;
   display: flex;
@@ -106,8 +107,8 @@ h1 {
   box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.25);
 }
 .secondLayer {
-  width: 17rem;
-  height: 17rem;
+  width: 16rem;
+  height: 16rem;
   background: rgba(66, 89, 177, 0.38);
   border-radius: 50%;
   display: flex;
@@ -116,8 +117,8 @@ h1 {
   box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.25);
 }
 .thirdLayer {
-  width: 13rem;
-  height: 13rem;
+  width: 12rem;
+  height: 12rem;
   background: rgba(66, 89, 177, 0.38);
   border-radius: 50%;
   display: flex;
@@ -130,25 +131,26 @@ h1 {
   position: absolute;
 }
 .fa-check {
-  font-size: 9rem;
+  font-size: 8rem;
   left: 50%;
   top: 10%;
   transform: translateX(-50%);
 }
 .fa-pen {
-  font-size: 5rem;
+  font-size: 4rem;
   left: 60%;
   top: 45%;
   transform: translateX(-50%);
 }
 
 #getStarted {
-  width: 145px;
-  height: 145px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   margin: 50px auto;
+  margin-top: 80px;
   padding-bottom: 10px;
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   color: var(--color2);
   cursor: pointer;
   text-align: center;
@@ -185,7 +187,7 @@ h1 {
   border-radius: 50%;
   box-shadow: var(--color1) -2px 2px 13px;
   font-size: 7rem;
-  margin-top: 50px;
+  margin: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -300,6 +302,7 @@ h1 {
 }
 footer {
   border-top: 1px solid var(--color1);
+  margin-top: 20px;
 }
 footer p {
   color: var(--color1);
