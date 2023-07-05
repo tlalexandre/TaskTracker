@@ -26,22 +26,29 @@ Task Tracker is a website that allows you to get a better management of the diff
         -The user will be able to personalise the name of his category, by entering the name wanted in the input when he creates a new category.
 
 ![CategoryCreation](./readme/CategoryCreation.png)
+
     -__Category Deletion__
         -By double clicking on the category, the user can delete a category. This will delete all the tasks inside the category as well. 
         -The user have to confirm the deletion of the category by clicking on the Confirm button, to avoid any missclick.
         -If the user clicks on the Cancel button, then the original title is displayed again. 
+
 ![CategoryDeletion](./readme/CategoryDeletion.png)
 
 
 - __The Task Section__
     -__Task Creation__
         -This area allow the user to create personalised tasks inside each category. The user will be able to easily create tasks by clicking on the New Task button.
+
         ![TaskCreation](./readme/TaskCreation.png)
+
     -__Task Completion__
         -By clicking a single time on the tasks, the user will be able to tell that a task has been completed as the background of the task will turn green. 
+
          ![TaskCompletion](./readme/TaskCompletion.png)
+
     -__Task Deletion__
         -By double clicking on the task, the user can delete it. To avoid any click error, the user will have to confirm the deletion by clicking on the "V" button, or the "X" one to restore the task as it was. 
+
          ![TaskDeletion](./readme/TaskDeletion.png)
 
 
@@ -55,6 +62,7 @@ Task Tracker is a website that allows you to get a better management of the diff
         -One array contains a list of the differents categories, and each task is in an array that belongs to the category where the task has been created.
     -__How is the Data loaded?__
         -When you open the website, the data in the local storage will be retrieve and the program will run through the differents arrays to display the correct information. 
+        
 ![LocalStorage](./readme/LocalStorage.png)
 
 ### Features Left to Implement
