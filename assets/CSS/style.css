@@ -1,3 +1,5 @@
+/* General Settings */
+
 @font-face {
   font-family: bold;
   src: url(../fonts/Quicksand-Bold.ttf);
@@ -22,34 +24,15 @@ body {
   background-size: cover;
   color: var(--color3);
 }
+
 /* Front Page Style */
+
 header {
   min-height: 100vh;
 }
 
-.categories {
-  box-shadow: 0px 20px 0px #183d77;
-  background-color: rgba(66, 89, 177, 0.3);
-}
-
-.agenda {
-  background-color: var(--color2);
-  box-shadow: 0px 20px 0px rgba(66, 89, 177, 0.58);
-}
-
-.categories div,
-.agenda div {
-  background-color: var(--color1);
-  padding: 0 20px;
-  border-radius: 50px;
-  margin: 20px 0;
-}
-a {
-  text-decoration: none;
-  color: var(--color2);
-}
 h1 {
-  margin-top: 50px;
+  margin-top: 10px;
   text-align: center;
   color: var(--color1);
   font-size: 5rem;
@@ -70,12 +53,12 @@ h1 {
   margin: 50px 0;
   width: 100%;
 }
-
+/* Instructions */
 .instructions {
   display: flex;
   justify-content: space-between;
-  /* margin-bottom: 100px; */
 }
+
 .firstSentence,
 .secondSentence {
   margin: 40px 0;
@@ -89,12 +72,15 @@ h1 {
   box-shadow: var(--color1) -5px 2px 13px;
   padding: 40px;
 }
+
 .secondSentence {
   border-radius: 50px 0 0 50px;
 }
+/* Header Logo */
 .logo {
   min-width: 25%;
 }
+
 .firstLayer {
   margin: 0 auto;
   width: 20rem;
@@ -106,6 +92,7 @@ h1 {
   align-items: center;
   box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.25);
 }
+
 .secondLayer {
   width: 16rem;
   height: 16rem;
@@ -142,7 +129,7 @@ h1 {
   top: 45%;
   transform: translateX(-50%);
 }
-
+/* Main Header Button */
 #getStarted {
   width: 100px;
   height: 100px;
@@ -157,9 +144,11 @@ h1 {
 }
 
 /* Categories Pages */
-.bgCategories {
+main {
   min-height: 100vh;
 }
+
+/* Category Creation area */
 
 .createCategory {
   display: flex;
@@ -168,6 +157,7 @@ h1 {
   flex-direction: column;
   height: 200px;
 }
+
 .createCategory p {
   color: var(--color1);
   margin-top: 20px;
@@ -175,9 +165,12 @@ h1 {
   text-align: center;
   visibility: hidden;
 }
+
+/* Allows to display the paragraph on hover of the CreateCategory div */
 .createCategory:hover p {
   visibility: visible;
 }
+
 .addCategory {
   width: 100px;
   height: 100px;
@@ -193,14 +186,14 @@ h1 {
   cursor: pointer;
 }
 
+/* Categories Wrapper */
 .categoriesWrapper {
-  width: 90vw;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 50px;
   columns: 4;
-  column-gap: 10px;
 }
 
+/* The flex settings allow the categories to display in a masonry style */
 .newCategory {
   width: 250px;
   backdrop-filter: blur(5px);
@@ -210,11 +203,12 @@ h1 {
   margin-right: auto;
   margin-bottom: 50px;
   break-inside: avoid;
-  display: flex; /* Added */
-  flex-wrap: wrap; /* Added */
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   box-shadow: var(--color1) -5px 2px 13px;
 }
+
 .categoryName {
   color: var(--color1);
   font-size: 1.5rem;
@@ -225,6 +219,7 @@ h1 {
   border-radius: 20px;
   padding: 10px;
 }
+
 .categoryNameInput {
   width: 90%;
   text-align: left;
@@ -233,19 +228,16 @@ h1 {
   font-weight: 900;
   font-size: 1.5rem;
   border: none;
-
   margin: 0 auto;
   border-radius: 20px;
   padding: 10px;
 }
+
 .categoryNameInput::placeholder {
   font-size: 1.5rem;
   color: var(--color1);
 }
-.categoryName input::placeholder {
-  font-size: 1.5rem;
-  text-align: center;
-}
+
 .newTask {
   display: flex;
   justify-content: space-around;
@@ -257,9 +249,7 @@ h1 {
   border-radius: 20px;
   height: 70px;
   padding: 5px;
-  flex-grow: 1; /* Added */
-  flex-basis: calc((100% / 4) - 10px); /* Added */
-  flex-shrink: 0; /* Added */
+  flex-basis: calc((100% / 4) - 10px);
   cursor: pointer;
 }
 .newTask input {
@@ -269,7 +259,6 @@ h1 {
 .newTask input::placeholder {
   height: 20px;
   width: 70%;
-
   border-radius: 20px;
   color: var(--color1);
   border: none;
@@ -285,17 +274,21 @@ h1 {
   border-radius: 20px;
   height: 30px;
   background: transparent;
-  backdrop-filter: blur(5px);
   color: var(--color1);
   box-shadow: var(--color1) 0px 0px 8px;
   cursor: pointer;
 }
+
 .confirmButton,
 .cancelButton {
-  border-radius: 50px;
-  width: 30%;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 20px;
   margin-top: 10px;
+  margin-right: 5px;
 }
+
 .done {
   background-color: rgb(54 255 0 / 26%);
 }
