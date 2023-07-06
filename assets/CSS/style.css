@@ -282,8 +282,8 @@ main {
 .confirmButton,
 .cancelButton {
   border: none;
-  border-radius: 50%;
-  width: 30px;
+  border-radius: 50px;
+  width: 30%;
   height: 20px;
   margin-top: 10px;
   margin-right: 5px;
