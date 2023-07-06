@@ -92,7 +92,10 @@ I checked the responsive of the website on differents devices, a desktop compute
 
 ### Unfixed Bugs
 
-You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
+- During the development,I encountered several bugs . Here's a non exhaustive list of them:
+    -In the Chrome Developer Tools , when displaying the website on mobile device to test responsiveness, the blur on the background of the categories get applied to the whole category. This issue seems to be existing only in the Developer Tools, and has not been detected on real mobile devices.
+    -The double click to delete a task or a category in the Developer Tools on mobile device doesn't seem to work either, however, it works on real mobile devices.
+    -Once you enter in the deletion menu and exit it with the Cancel Button, you don't seem to be able to put it back as done. The only fix to that issue is to reload the page which allows you to say the task is done again. 
 
 ## Deployment
 
@@ -106,20 +109,16 @@ The live link can be found here - https://tlalexandre.github.io/TaskTracker/
 
 ## Credits 
 
-In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-
-You can break the credits section up into Content and Media, depending on what you have included in your project. 
+I've used Chat GPT to help me during the development of this website, mainly on the date suffix function that allows me to get the correct suffix for each date of the month. 
 
 ### Content 
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
 - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 
 ### Media
 
-- The photos used on the home and sign up page are from This Open Source site
-- The images used for the gallery page were taken from this other open source site
+- The photos used on the home and sign up page are from Unsplash, an open source photos website. 
+
 
 
 Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 

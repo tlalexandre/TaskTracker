@@ -29,6 +29,7 @@ function saveData() {
 
 function loadData() {
   let savedData = localStorage.getItem("categories");
+  // If the function finds some existing data in the local storage, it will create a category and the tasks that belongs to it
   if (savedData) {
     let categories = JSON.parse(savedData);
     categories.forEach((category) => {
@@ -87,6 +88,7 @@ function loadData() {
   }
 }
 
+// This function creates a category .
 function createCategory() {
   let newCategory = document.createElement("div");
   newCategory.classList.add("newCategory");
@@ -102,7 +104,7 @@ function createCategory() {
   addNewTask.classList.add("addNewTask");
   addNewTask.textContent = "New Task";
   newCategory.appendChild(addNewTask);
-
+  // Event listener to add a name to the category
   categoryName.addEventListener("keyup", (event) => {
     if (event.key == "Enter") {
       setCategoryName(categoryName, newCategory);
@@ -110,11 +112,7 @@ function createCategory() {
     }
   });
   categoriesWrapper.insertBefore(newCategory, categoriesWrapper.firstChild);
-
-  addNewTask.addEventListener("click", () => {
-    createTask(newCategory, addNewTask);
-    saveData();
-  });
+  addNewTaskListener(addNewTask);
 }
 
 function addNewTaskListener(addNewTask) {
@@ -123,11 +121,12 @@ function addNewTaskListener(addNewTask) {
     saveData();
   });
 }
+// Event listener on the addCategory button to create a new category
 
 addCategory.addEventListener("click", () => {
   createCategory();
 });
-
+// Allow the user to validate the name of category, and replace the input by a heading.
 function setCategoryName(categoryNameInput, newCategory) {
   let categoryNameValue = categoryNameInput.value;
   let categoryNameHeading = document.createElement("h2");
@@ -141,7 +140,7 @@ function setCategoryName(categoryNameInput, newCategory) {
   newCategory.insertBefore(categoryNameHeading, newCategory.firstChild);
   categoryNameInput.remove();
 }
-
+// Create a task.
 function createTask(category, addNewTask) {
   let newTask = document.createElement("div");
   newTask.classList.add("newTask");
@@ -171,6 +170,7 @@ function createTask(category, addNewTask) {
     }
   });
 
+  // Checks if the date is anterior to the date of Today when a task is created and prevent the user to create a task in the past.
   taskDate.addEventListener("change", (event) => {
     const today = new Date().toISOString().split("T")[0];
     let inputDate = new Date(taskDate.value);
@@ -191,11 +191,12 @@ function createTask(category, addNewTask) {
     saveData();
     newTask.style.border = "1px solid white";
   });
-
+  // Event listener to delete a task
   newTask.addEventListener("dblclick", () => {
     removeTask(newTask);
     saveData();
   });
+  // Event listener to add the class done to a task. This results in the task background turning green.
   newTask.addEventListener("click", (event) => {
     if (event.target.tagName === "INPUT") {
       return;
@@ -206,12 +207,12 @@ function createTask(category, addNewTask) {
 
   category.insertBefore(newTask, addNewTask);
 }
-
+// Add class done to a task
 function toggleTaskDone(newTask) {
   newTask.classList.toggle("done");
   saveData();
 }
-
+// Delete a task
 function removeTask(task) {
   const deleteConfirmationText = "Are you sure you want to delete this task?";
   const originalTaskName = task.querySelector(".taskName").textContent;
@@ -220,6 +221,7 @@ function removeTask(task) {
   task.style.backgroundColor = " rgb(187 82 82 / 46%)";
   task.style.fontWeight = "bold";
 
+  // Create and append a Confirm and a Cancel button .
   const confirmButton = document.createElement("button");
   confirmButton.classList.add("confirmButton");
   confirmButton.textContent = "V";
@@ -230,13 +232,13 @@ function removeTask(task) {
   task.innerHTML = `<p>${deleteConfirmationText}</p>`;
   task.appendChild(confirmButton);
   task.appendChild(cancelButton);
-
+  // The Confirm button deletes the task.
   confirmButton.addEventListener("click", () => {
     let category = task.parentElement;
     category.removeChild(task);
     saveData();
   });
-
+  // The Cancel Button brings back the name and the date of the task to its original state.
   cancelButton.addEventListener("click", () => {
     task.innerHTML = ""; // Clear the task content
     const taskDetails = document.createElement("div");
@@ -249,7 +251,7 @@ function removeTask(task) {
     saveData();
   });
 }
-
+// This allows the user to remove a category.
 function removeCategory(category) {
   const deleteCategoryText = "Are you sure you want to delete that category?";
   const categoryName = category.querySelector(".categoryName");
@@ -280,7 +282,7 @@ function removeCategory(category) {
     saveData();
   });
 }
-
+// This function allows to put back the name of the task after pressing the Cancel button, on deletion.
 function addTaskNameToTask(taskName, taskDetails) {
   let task = document.createElement("h3");
   task.classList.add("taskName");
@@ -288,7 +290,7 @@ function addTaskNameToTask(taskName, taskDetails) {
 
   taskDetails.insertBefore(task, taskDetails.firstChild);
 }
-
+// This function allows to put back the date of the task after pressing the Cancel button, on deletion.
 function addTaskDateToTask(taskDate, taskDetails) {
   let date = document.createElement("p");
   date.classList.add("taskDate");
@@ -296,7 +298,7 @@ function addTaskDateToTask(taskDate, taskDetails) {
 
   taskDetails.appendChild(date);
 }
-
+// This function determines the date suffix for each date.
 function getDateSuffix(date) {
   if (date >= 11 && date <= 13) {
     return "th";
