@@ -48,7 +48,6 @@ Task Tracker is a website that allows you to get a better management of the diff
     ![TaskCompletion](./readme/TaskCompletion.png)
 
     -__Task Deletion__
-
         -By double clicking on the task, the user can delete it. 
         -To avoid any click error, the user will have to confirm the deletion by clicking on the "V" button, or the "X" one to restore the task as it was. 
 
