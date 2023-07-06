@@ -37,13 +37,13 @@ Task Tracker is a website that allows you to get a better management of the diff
 
 - __The Task Section__
   
-    -__Task Creation__
+    - __Task Creation__
 
         -This area allow the user to create personalised tasks inside each category. The user will be able to easily create tasks by clicking on the New Task button.
 
     ![TaskCreation](./readme/TaskCreation.png)
 
-    -__Task Completion__
+    - __Task Completion__
 
         -By clicking a single time on the tasks, the user will be able to tell that a task has been completed as the background of the task will turn green. 
 
