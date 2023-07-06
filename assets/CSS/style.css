@@ -156,11 +156,15 @@ main {
   align-items: center;
   flex-direction: column;
   height: 200px;
+  margin-bottom: 70px;
 }
 
 .createCategory h2 {
   color: var(--color1);
-  margin-bottom: 50px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .createCategory p {
