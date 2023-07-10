@@ -26,7 +26,6 @@ Task Tracker is a website that allows you to get a better management of the diff
     ![CategoryCreation](./readme/CategoryCreation.png)
 
     -__Category Completion__
-
         - By double clicking on the category, the user can delete a category. This will delete all the tasks inside the category as well. 
         - The user have to confirm the deletion of the category by clicking on the Confirm button, to avoid any missclick.
         - If the user clicks on the Cancel button, then the original title is displayed again. 
