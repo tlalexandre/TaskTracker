@@ -19,13 +19,13 @@ Task Tracker is a website that allows you to get a better management of the diff
 
 - __The Category Area__
   
-    -__Category Creation__
+    - __Category Creation__
         - This area will allow the user to create categories. The user will be able to easily see the icon to create a new category, and a subtitle is provided to guide the user.
         - The user will be able to personalise the name of his category, by entering the name wanted in the input when he creates a new category.
 
     ![CategoryCreation](./readme/CategoryCreation.png)
 
-    -__Category Completion__
+    - __Category Completion__
         - By double clicking on the category, the user can delete a category. This will delete all the tasks inside the category as well. 
         - The user have to confirm the deletion of the category by clicking on the Confirm button, to avoid any missclick.
         - If the user clicks on the Cancel button, then the original title is displayed again. 
@@ -58,7 +58,7 @@ Task Tracker is a website that allows you to get a better management of the diff
 
 - __Data Storage__
 
-    -__How is the Data saved?__
+    - __How is the Data saved?__
 
         - To save the different categories and tasks created by the user, I used the local storage of the browser.
         - Whenever a new category or task is created, its data is added in the local storage, in an array. 
@@ -66,7 +66,7 @@ Task Tracker is a website that allows you to get a better management of the diff
         - On every action, the data is saved, this allows the user to have a dynamic website.
         - One array contains a list of the differents categories, and each task is in an array that belongs to the category where the task has been created.
         
-    -__How is the Data loaded?__
+    - __How is the Data loaded?__
 
         - When you open the website, the data in the local storage will be retrieve and the program will run through the differents arrays to display the correct   information. 
 
