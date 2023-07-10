@@ -335,7 +335,9 @@ footer p {
   header h1 {
     font-size: 3rem;
   }
-
+  .createCategory h2 {
+    margin: 0 10px;
+  }
   .categoriesWrapper {
     columns: 1;
   }

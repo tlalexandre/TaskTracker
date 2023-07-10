@@ -94,12 +94,17 @@ I checked the responsive of the website on differents devices, a desktop compute
       - Largest function has 19 statements in it, while the median is 3.
       - The most complex function has a cyclomatic complexity value of 6 while the median is 1.
 
+### Fixed Bugs
+
+-During the development of the website, I encountered several bugs. Here's an example of one of them, and how I fixed it:
+    -In the Chrome Developer Tools , when displaying the website on mobile device to test responsiveness, the blur on the background of the categories get applied to the whole category. This issue seems to be existing only in the Developer Tools, and has not been detected on real mobile devices.
+        -Solving:
+            When i checked my CSS file, I realised that the button in my Category had the CSS property backdrop-filter . This made the whole div under it go blurry. But whenever i was on a computer to display the site, this property didn't apply anymore. Only on mobile devices. It seems that issue only exists on the Chrome Dev Tools, not in other browsers.
 ### Unfixed Bugs
 
 - During the development,I encountered several bugs . Here's a non exhaustive list of them:
-    -In the Chrome Developer Tools , when displaying the website on mobile device to test responsiveness, the blur on the background of the categories get applied to the whole category. This issue seems to be existing only in the Developer Tools, and has not been detected on real mobile devices.
     -The double click to delete a task or a category in the Developer Tools on mobile device doesn't seem to work either, however, it works on real mobile devices.
-    -Once you enter in the deletion menu and exit it with the Cancel Button, you don't seem to be able to put it back as done. The only fix to that issue is to reload the page which allows you to say the task is done again. 
+    -Once you enter in the deletion menu for a task and exit it with the Cancel Button, you don't seem to be able to change the state of the task as done. The only fix to that issue is to reload the page which allows you to say the task is done again. 
 
 ## Deployment
 
