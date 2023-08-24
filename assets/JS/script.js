@@ -10,18 +10,35 @@ getStartedButton.addEventListener("click", function () {
 function saveData() {
   let categories = Array.from(document.querySelectorAll(".newCategory")).map(
     (category) => {
-      let categoryName = category.querySelector(".categoryName").textContent;
+      let categoryNameElement = category.querySelector(".categoryName");
+      let categoryName = categoryNameElement
+        ? categoryNameElement.innerHTML
+        : "";
+      if (categoryName.trim() === "") {
+        return null;
+      }
       let tasks = Array.from(category.querySelectorAll(".newTask")).map(
         (task) => {
+          let taskNameElement = task.querySelector(".taskName");
+          let taskDateElement = task.querySelector(".taskDate");
+          if (!taskNameElement || !taskDateElement) {
+            return null;
+          }
+
           let taskName = task.querySelector(".taskName").textContent;
           let taskDate = task.querySelector(" .taskDate").textContent;
+          if (taskName.trim() === "") {
+            return null;
+          }
           let taskDone = task.classList.contains("done");
           return { name: taskName, date: taskDate, done: taskDone };
         }
       );
+      tasks = tasks.filter((task) => task != null);
       return { name: categoryName, tasks: tasks };
     }
   );
+  categories = categories.filter((category) => category != null);
   localStorage.setItem("categories", JSON.stringify(categories));
 }
 
@@ -37,6 +54,16 @@ function loadData() {
       newCategory.classList.add("newCategory");
       categoriesWrapper.appendChild(newCategory);
 
+      let deleteCategoryButton = document.createElement("button");
+      deleteCategoryButton.classList.add("deleteCategoryButton");
+      deleteCategoryButton.textContent = "X";
+      deleteCategoryButton.style.background = "red";
+      newCategory.appendChild(deleteCategoryButton);
+
+      deleteCategoryButton.addEventListener("click", () => {
+        removeCategory(newCategory);
+        saveData();
+      });
       let categoryNameHeading = document.createElement("h2");
       categoryNameHeading.classList.add("categoryName");
       categoryNameHeading.textContent = category.name;
@@ -47,10 +74,6 @@ function loadData() {
       addNewTask.textContent = "New Task";
       newCategory.appendChild(addNewTask);
 
-      categoryNameHeading.addEventListener("dblclick", () => {
-        removeCategory(newCategory);
-        saveData();
-      });
       category.tasks.forEach((task) => {
         let newTask = document.createElement("div");
         newTask.classList.add("newTask");
@@ -73,14 +96,22 @@ function loadData() {
         taskDateHeading.textContent = task.date;
         taskDetails.appendChild(taskDateHeading);
 
+        let deleteTaskButton = document.createElement("button");
+        deleteTaskButton.classList.add("deleteTaskButton");
+        deleteTaskButton.textContent = "X";
+        deleteTaskButton.style.background = "red";
+        newTask.appendChild(deleteTaskButton);
+
+        deleteTaskButton.addEventListener("click", () => {
+          removeTask(newTask);
+          saveData();
+        });
+
         newTask.addEventListener("click", () => {
           toggleTaskDone(newTask);
           saveData();
         });
-        newTask.addEventListener("dblclick", () => {
-          removeTask(newTask);
-          saveData();
-        });
+
         newTask.style.border = "1px solid white";
       });
       addNewTaskListener(addNewTask);
@@ -94,6 +125,17 @@ function createCategory() {
   newCategory.classList.add("newCategory");
   categoriesWrapper.appendChild(newCategory);
 
+  let deleteCategoryButton = document.createElement("button");
+  deleteCategoryButton.classList.add("deleteCategoryButton");
+  deleteCategoryButton.textContent = "X";
+  deleteCategoryButton.style.background = "red";
+  newCategory.appendChild(deleteCategoryButton);
+
+  deleteCategoryButton.addEventListener("click", () => {
+    removeCategory(newCategory);
+    saveData();
+  });
+
   let categoryName = document.createElement("input");
   categoryName.classList.add("categoryNameInput");
   categoryName.setAttribute("type", "text");
@@ -106,9 +148,12 @@ function createCategory() {
   newCategory.appendChild(addNewTask);
   // Event listener to add a name to the category
   categoryName.addEventListener("keyup", (event) => {
-    if (event.key == "Enter") {
+    if (event.key == "Enter" && categoryName.value.trim() !== "") {
       setCategoryName(categoryName, newCategory);
       saveData();
+    }
+    if (event.key == "Enter" && categoryName.value.trim() == "") {
+      alert("Please give a name to your category");
     }
   });
   categoriesWrapper.insertBefore(newCategory, categoriesWrapper.firstChild);
@@ -128,17 +173,21 @@ addCategory.addEventListener("click", () => {
 });
 // Allow the user to validate the name of category, and replace the input by a heading.
 function setCategoryName(categoryNameInput, newCategory) {
-  let categoryNameValue = categoryNameInput.value;
-  let categoryNameHeading = document.createElement("h2");
-  categoryNameHeading.classList.add("categoryName");
-  categoryNameHeading.textContent = categoryNameValue;
+  let categoryNameValue = categoryNameInput.value.trim();
+  if (categoryNameValue !== "") {
+    let categoryNameHeading = document.createElement("h2");
+    categoryNameHeading.classList.add("categoryName");
+    categoryNameHeading.textContent = categoryNameValue;
 
-  categoryNameHeading.addEventListener("dblclick", () => {
-    removeCategory(newCategory);
-    saveData();
-  });
-  newCategory.insertBefore(categoryNameHeading, newCategory.firstChild);
-  categoryNameInput.remove();
+    let deleteCategoryButton = newCategory.querySelector(
+      ".deleteCategoryButton"
+    );
+    newCategory.insertBefore(
+      categoryNameHeading,
+      deleteCategoryButton.nextSibling
+    );
+    categoryNameInput.remove();
+  }
 }
 // Create a task.
 function createTask(category, addNewTask) {
@@ -161,12 +210,30 @@ function createTask(category, addNewTask) {
   newTask.appendChild(taskDate);
 
   taskName.addEventListener("keyup", (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && taskName.value.trim() !== "") {
       addTaskNameToTask(taskName.value, taskDetails);
       taskName.remove();
       taskDate.focus();
       saveData();
       newTask.style.border = "1px solid white";
+    }
+    if (event.key === "Enter" && taskName.value.trim() == "") {
+      alert("Please give a name to your task");
+    }
+  });
+
+  let deleteTaskButton = document.createElement("button");
+  deleteTaskButton.classList.add("deleteTaskButton");
+  deleteTaskButton.textContent = "X";
+  deleteTaskButton.style.background = "red";
+  newTask.appendChild(deleteTaskButton);
+
+  deleteTaskButton.addEventListener("click", () => {
+    if (taskName.value.trim() != "") {
+      removeTask(newTask);
+      saveData();
+    } else {
+      alert("Please give a name to your task before deleting it");
     }
   });
 
@@ -191,11 +258,7 @@ function createTask(category, addNewTask) {
     saveData();
     newTask.style.border = "1px solid white";
   });
-  // Event listener to delete a task
-  newTask.addEventListener("dblclick", () => {
-    removeTask(newTask);
-    saveData();
-  });
+
   // Event listener to add the class done to a task. This results in the task background turning green.
   newTask.addEventListener("click", (event) => {
     if (event.target.tagName === "INPUT") {
@@ -215,8 +278,8 @@ function toggleTaskDone(newTask) {
 // Delete a task
 function removeTask(task) {
   const deleteConfirmationText = "Are you sure you want to delete this task?";
-  const originalTaskName = task.querySelector(".taskName").textContent;
-  const originalTaskDate = task.querySelector(".taskDate").textContent;
+  const originalTaskName = task.querySelector(".taskName")?.textContent || "";
+  const originalTaskDate = task.querySelector(".taskDate")?.textContent || "";
 
   task.style.backgroundColor = " rgb(187 82 82 / 46%)";
   task.style.fontWeight = "bold";
@@ -246,6 +309,17 @@ function removeTask(task) {
     task.appendChild(taskDetails);
     addTaskNameToTask(originalTaskName, taskDetails);
     addTaskDateToTask(originalTaskDate, taskDetails);
+    let deleteTaskButton = document.createElement("button");
+    deleteTaskButton.classList.add("deleteTaskButton");
+    deleteTaskButton.textContent = "X";
+    deleteTaskButton.style.background = "red";
+    task.appendChild(deleteTaskButton);
+
+    deleteTaskButton.addEventListener("click", () => {
+      removeTask(task);
+      saveData();
+    });
+
     task.style.border = "1px solid white";
     task.style.backgroundColor = "rgb(82 135 187 / 20%)";
     saveData();
@@ -255,32 +329,37 @@ function removeTask(task) {
 function removeCategory(category) {
   const deleteCategoryText = "Are you sure you want to delete that category?";
   const categoryName = category.querySelector(".categoryName");
-  let originalCategoryName = categoryName.textContent;
-  categoryName.innerHTML = deleteCategoryText;
-  categoryName.style.color = "white";
-  categoryName.style.background = "rgb(187 82 82 / 46%)";
 
-  const confirmButton = document.createElement("button");
-  confirmButton.classList.add("confirmButton");
-  confirmButton.textContent = "Confirm";
-  const cancelButton = document.createElement("button");
-  cancelButton.classList.add("cancelButton");
-  cancelButton.textContent = "Cancel";
+  if (categoryName) {
+    let originalCategoryName = categoryName ? categoryName.textContent : "";
+    categoryName.textContent = deleteCategoryText;
+    categoryName.style.color = "white";
+    categoryName.style.background = "rgb(187 82 82 / 46%)";
 
-  categoryName.appendChild(confirmButton);
-  categoryName.appendChild(cancelButton);
+    const confirmButton = document.createElement("button");
+    confirmButton.classList.add("confirmButton");
+    confirmButton.textContent = "Confirm";
+    const cancelButton = document.createElement("button");
+    cancelButton.classList.add("cancelButton");
+    cancelButton.textContent = "Cancel";
 
-  confirmButton.addEventListener("click", () => {
-    let categoryWrapper = category.parentElement;
-    categoryWrapper.removeChild(category);
-    saveData();
-  });
+    categoryName.appendChild(confirmButton);
+    categoryName.appendChild(cancelButton);
 
-  cancelButton.addEventListener("click", () => {
-    categoryName.textContent = originalCategoryName;
-    categoryName.style.backgroundColor = "transparent";
-    saveData();
-  });
+    confirmButton.addEventListener("click", () => {
+      let categoryWrapper = category.parentElement;
+      categoryWrapper.removeChild(category);
+      saveData();
+    });
+
+    cancelButton.addEventListener("click", () => {
+      categoryName.textContent = originalCategoryName;
+      categoryName.style.backgroundColor = "transparent";
+      saveData();
+    });
+  } else if (!categoryName) {
+    alert("Please give a name to your category before deleting it");
+  }
 }
 // This function allows to put back the name of the task after pressing the Cancel button, on deletion.
 function addTaskNameToTask(taskName, taskDetails) {

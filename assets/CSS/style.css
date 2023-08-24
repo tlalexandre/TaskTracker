@@ -298,6 +298,17 @@ main {
   margin-right: 5px;
 }
 
+.deleteCategoryButton {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+.deleteTaskButton {
+  border-radius: 50%;
+  width: 10%;
+  min-width: 20px;
+}
+
 .done {
   background-color: rgb(54 255 0 / 26%);
 }
