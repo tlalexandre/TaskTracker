@@ -303,10 +303,18 @@ main {
   width: 20px;
   height: 20px;
 }
+.deleteCategoryButton:hover {
+  width: 21px;
+  height: 21px;
+}
 .deleteTaskButton {
   border-radius: 50%;
   width: 10%;
   min-width: 20px;
+}
+.deleteTaskButton:hover {
+  width: 11%;
+  height: 21px;
 }
 
 .done {

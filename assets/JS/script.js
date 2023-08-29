@@ -147,12 +147,12 @@ function createCategory() {
   addNewTask.textContent = "New Task";
   newCategory.appendChild(addNewTask);
   // Event listener to add a name to the category
-  categoryName.addEventListener("keyup", (event) => {
-    if (event.key == "Enter" && categoryName.value.trim() !== "") {
+  categoryName.addEventListener("blur", () => {
+    if (categoryName.value.trim() !== "") {
       setCategoryName(categoryName, newCategory);
       saveData();
     }
-    if (event.key == "Enter" && categoryName.value.trim() == "") {
+    if (categoryName.value.trim() == "") {
       alert("Please give a name to your category");
     }
   });
@@ -209,15 +209,15 @@ function createTask(category, addNewTask) {
   taskDate.setAttribute("type", "date");
   newTask.appendChild(taskDate);
 
-  taskName.addEventListener("keyup", (event) => {
-    if (event.key === "Enter" && taskName.value.trim() !== "") {
+  taskName.addEventListener("blur", (event) => {
+    if (taskName.value.trim() !== "") {
       addTaskNameToTask(taskName.value, taskDetails);
       taskName.remove();
       taskDate.focus();
       saveData();
       newTask.style.border = "1px solid white";
     }
-    if (event.key === "Enter" && taskName.value.trim() == "") {
+    if (taskName.value.trim() == "") {
       alert("Please give a name to your task");
     }
   });
