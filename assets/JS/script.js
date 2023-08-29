@@ -111,8 +111,6 @@ function loadData() {
           toggleTaskDone(newTask);
           saveData();
         });
-
-        newTask.style.border = "1px solid white";
       });
       addNewTaskListener(addNewTask);
     });
@@ -215,7 +213,6 @@ function createTask(category, addNewTask) {
       taskName.remove();
       taskDate.focus();
       saveData();
-      newTask.style.border = "1px solid white";
     }
     if (taskName.value.trim() == "") {
       alert("Please give a name to your task");
@@ -256,7 +253,6 @@ function createTask(category, addNewTask) {
     addTaskDateToTask(formattedDate, taskDetails);
     taskDate.remove();
     saveData();
-    newTask.style.border = "1px solid white";
   });
 
   // Event listener to add the class done to a task. This results in the task background turning green.
@@ -320,7 +316,6 @@ function removeTask(task) {
       saveData();
     });
 
-    task.style.border = "1px solid white";
     task.style.backgroundColor = "rgb(82 135 187 / 20%)";
     saveData();
   });
