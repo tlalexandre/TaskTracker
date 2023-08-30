@@ -316,7 +316,7 @@ function removeTask(task) {
       saveData();
     });
 
-    task.style.backgroundColor = "rgb(82 135 187 / 20%)";
+    task.style.backgroundColor = "rgb(82 135 187 / 60%)";
     saveData();
   });
 }

@@ -309,11 +309,11 @@ main {
 }
 .deleteTaskButton {
   border-radius: 50%;
-  width: 10%;
+  width: 20px;
   min-width: 20px;
 }
 .deleteTaskButton:hover {
-  width: 11%;
+  width: 21px;
   height: 21px;
 }
 
