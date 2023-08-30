@@ -159,7 +159,8 @@ function createCategory() {
 }
 
 function addNewTaskListener(addNewTask) {
-  addNewTask.addEventListener("click", () => {
+  addNewTask.addEventListener("mousedown", () => {
+    event.preventDefault();
     createTask(addNewTask.parentElement, addNewTask);
     saveData();
   });
