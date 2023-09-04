@@ -331,6 +331,31 @@ footer p {
   font-size: 1.3rem;
 }
 
+/* 404 page */
+
+.errorTitle {
+  text-align: center;
+  margin-top: 100px;
+}
+.errorSentence {
+  margin-top: 50px;
+  text-align: center;
+  color: #ffffff;
+}
+#backMainPage {
+  display: block;
+  color: white;
+  background-color: #4259b1;
+  margin: 50px auto;
+  text-align: center;
+  text-decoration: none;
+  border: 5px double #003263;
+  width: 20%;
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 2rem;
+}
+
 @media screen and (max-width: 1300px) {
   .firstSentence,
   .secondSentence {
